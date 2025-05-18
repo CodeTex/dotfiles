@@ -1,0 +1,33 @@
+# Shell
+zsh
+zap : zsh plugin manager
+starship : shell prompt framework
+
+# TTY
+wezterm
+alacritty : as alternative
+
+# Fonts
+otf-firamono-nerd
+ttf-firacode-nerd
+ttf-noto-nerd : used in zen browser
+
+# Tools
+git
+eza : better ls
+zoxide : better cd
+ripgrep : better grep
+fastfetch : display system information
+less : read text file paged (not installed by default)
+yay : aur capable wrapper for pacman
+
+# TUI
+superfile : file manager
+lazygit : git manager
+
+# Desktop Environment
+hyprland : window manager
+hyprpaper : wallpaper utility
+
+# Applications
+zen-browser-bin

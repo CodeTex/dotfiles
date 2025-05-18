@@ -1,0 +1,11 @@
+dconf/
+glib-2.0/
+go/
+kde.org/
+pulse/
+
+git/.other*
+
+dolphinrc
+mimeapps.list
+user-dirs.*
