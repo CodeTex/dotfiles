@@ -1,0 +1,21 @@
+[user]
+	name = codetex
+	email = 29424456+CodeTex@users.noreply.github.com	
+
+[core]
+	compression = 9
+	whitespace = error
+	preloadindex = true
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+
+[url "https://raw.githubusercontent.com/"]
+	insteadOf = "gu:"
+
+[url "git@github.com:CodeTex/"]
+	insteadOf = "ct:"
+
+[init]
+	defaultBranch = main
+
