@@ -28,13 +28,13 @@ lazygit : git manager
 
 # Utilities
 pipewire
-pipewire-alsa
-pipewire-pulse
 wireplumber : session and policy manager for PipeWire
 
 # Desktop Environment
 hyprland : window manager
 hyprpaper : wallpaper utility
+hyprpolkitagent : polkit auth manager daemon
+xdg-desktop-portal-hyprland : d-bus comm program for app communication
 
 # Applications
 zen-browser-bin
