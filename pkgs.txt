@@ -12,7 +12,7 @@ otf-firamono-nerd
 ttf-firacode-nerd
 ttf-noto-nerd : used in zen browser
 
-# Tools
+# CLI Tools
 git
 eza : better ls
 zoxide : better cd
@@ -25,6 +25,12 @@ flatpak : Flatpak repository access for sandboxed desktop apps
 # TUI
 superfile : file manager
 lazygit : git manager
+
+# Utilities
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber : session and policy manager for PipeWire
 
 # Desktop Environment
 hyprland : window manager
