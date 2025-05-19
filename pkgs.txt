@@ -20,6 +20,7 @@ ripgrep : better grep
 fastfetch : display system information
 less : read text file paged (not installed by default)
 yay : aur capable wrapper for pacman
+flatpak : Flatpak repository access for sandboxed desktop apps
 
 # TUI
 superfile : file manager
@@ -31,3 +32,7 @@ hyprpaper : wallpaper utility
 
 # Applications
 zen-browser-bin
+
+# Applications (flatpak)
+dev.vencord.Vesktop
+

@@ -45,6 +45,8 @@ alias lta='lt -a'
 
 alias fl="fc-list : family | awk -F ',' '{print \$1}' | sort | uniq"
 
+alias wall="~/.config/hypr/scripts/wallpaper.sh"
+
 alias ff='fastfetch'
 
 alias lgit='lazygit'
