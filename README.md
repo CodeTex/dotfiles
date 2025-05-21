@@ -11,8 +11,8 @@ This is my personal backup for my dotfile configuration files, in case I mess so
 - __Font__: FiraCode Nerd Font
 - __Theme__: Catppuccin Macchiato
 - __Display Manager__: Ly
-- __Notification__:
-- __Bar__:
+- __Notification__: Swaync
+- __Bar__: Waybar
 - __Launcher__:
 - __File Managers__: Thunar (GUI), Superfile (TUI)
 - __Wallpaper__: Hyprpaper
