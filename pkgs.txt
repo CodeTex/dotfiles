@@ -26,19 +26,31 @@ flatpak : Flatpak repository access for sandboxed desktop apps
 superfile : file manager
 lazygit : git manager
 
-# Utilities
+# Audio Utilities
 pipewire
+pipewire-alsa
+pipewire-pulse
+pwvucontrol : volume control (flatpak)
 wireplumber : session and policy manager for PipeWire
+
+# Bluetooth Utilities
+bluez : bluetooth.service
+bluez-utils
+blueman : bluetooth manager
 
 # Desktop Environment
 hyprland : window manager
 hyprpaper : wallpaper utility
 hyprpolkitagent : polkit auth manager daemon
 xdg-desktop-portal-hyprland : d-bus comm program for app communication
+waybar
 
-# Applications
+# File manager
+thunar
+thunar-volman : in thunar set https://docs.xfce.org/xfce/thunar/using-removable-media#managing_removable_drives_and_media
+gvfs : required by thunar-volman
+
+# Other applications
 zen-browser-bin
-
-# Applications (flatpak)
-dev.vencord.Vesktop
+vesktop : vencord wrapped (flatpak)
 
