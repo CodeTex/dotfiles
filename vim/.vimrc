@@ -5,10 +5,12 @@ filetype indent on
 syntax on
 
 set relativenumber
-" set cursorline
 
 set shiftwidth=4
 set tabstop=4
 
 set scrolloff=10
+
+set termguicolors
+colorscheme catppuccin_mocha
 
