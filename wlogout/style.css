@@ -18,7 +18,7 @@ button {
 	background-size: 8%;
 	box-shadow: none;
 	text-shadow: none;
-	/*animation: gradient_f 20s ease-in infinite; */
+	animation: gradient_f 20s ease-in infinite;
 }
 
 button:focus {
@@ -30,9 +30,41 @@ button:hover {
 	background-color: #585b70;
 	background-size: 16%;
 	border-radius: 32px;
-	/*animation: gradient_f 20s ease-in infinite;
-	transition: all 0.3s cubic-bezier(.55, .0, .28, 0.682);*/
+	animation: gradient_f 20s ease-in infinite;
+	transition: all 0.3s cubic-bezier(.55, .0, .28, 0.682);
 }
+
+/*
+button:hover#lock {
+    border-radius: 32px;
+    margin : 40px 0px 40px 20px;
+}
+
+button:hover#logout {
+    border-radius: 32px;
+    margin : 40px 0px 40px 0px;
+}
+
+button:hover#suspend {
+    border-radius: 32px;
+    margin : 40px 20px 40px 0px;
+}
+
+button:hover#shutdown {
+    border-radius: 32px;
+    margin : 40px 0px 40px 20px;
+}
+
+button:hover#hibernate {
+    border-radius: 32px;
+    margin : 40px 0px 40px 0px;
+}
+
+button:hover#reboot {
+    border-radius: 32px;
+    margin : 40px 20px 40px 0px;
+}
+*/
 
 #lock {
     background-image: image(url("./icons/lock_white.png"), url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
