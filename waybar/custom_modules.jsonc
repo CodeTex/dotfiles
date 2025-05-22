@@ -1,0 +1,29 @@
+// -*- mode: jsonc -*-
+{
+	// Notifications
+	"custom/notification": {
+		"tooltip": false,
+		"format": "",
+		"on-click": "swaync-client -t -sw",
+		"escape": true
+	},
+
+	// Waybar reload
+	"custom/reload": {
+		"format": "󰑓",
+		"on-click": "killall waybar && waybar &"
+	},	
+
+	// Updates count
+	"custom/updates": {
+        "format": " {}",
+        "tooltip-format": "{}",
+        "escape": true,
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "restart-interval": 60,
+        "on-click": "wezterm start -- bash -c 'yay -Syu; read -p \"Press Enter to exit...\"'",
+        "tooltip": false
+    }
+}
+
