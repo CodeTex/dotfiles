@@ -30,13 +30,16 @@ lazygit : git manager
 pipewire
 pipewire-alsa
 pipewire-pulse
-pwvucontrol : volume control (flatpak)
 wireplumber : session and policy manager for PipeWire
+puvucontrol
+pamixer
+# systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 # Bluetooth Utilities
-bluez : bluetooth.service
+bluez
 bluez-utils
 blueman : bluetooth manager
+# systemctl enable bluetooth.service
 
 # Desktop Environment
 hyprland : window manager
@@ -44,6 +47,7 @@ hyprpaper : wallpaper utility
 hyprpolkitagent : polkit auth manager daemon
 xdg-desktop-portal-hyprland : d-bus comm program for app communication
 waybar
+# systemctrl --user enable xdg-desktop-portal-hyprland
 
 # File manager
 thunar
