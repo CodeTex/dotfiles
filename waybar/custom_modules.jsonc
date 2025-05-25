@@ -8,6 +8,12 @@
 		"escape": true
 	},
 
+	"custom/power": {
+		"format": "",
+		"rotate": 0,
+		"on-click": "wlogout" 
+	},
+
 	// Waybar reload
 	"custom/reload": {
 		"format": "󰑓",

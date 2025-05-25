@@ -41,8 +41,8 @@
 		"custom/reload",
 		"pulseaudio",
 		"bluetooth",
-		"network"
+		"network",
 		// "power-profiles-daemon",
-		// "custom/power"
+		"custom/power"
 	],
 }
