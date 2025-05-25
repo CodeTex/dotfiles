@@ -17,14 +17,15 @@
 	// Audio management (even though we are using pipewire)
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
-        "format-bluetooth": "{volume}%  {icon} {format_source}",
-        "format-bluetooth-muted": "󰝟  {icon} {format_source}",
-        "format-muted": "󰝟  {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+        "format-muted": "{icon} 󰝟 {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
 			"alsa_output.pci-0000_03_00.1.hdmi-stereo": "󰇄",
-          	"alsa_output.usb-SteelSeries_Arctis_Nova_Pro_Wireless-00.analog-stereo": "",
+          	"alsa_output.usb-Generic_USB_Audio-00.HiFi__SPDIF__sink": "󰇄",
+			"alsa_output.usb-SteelSeries_Arctis_Nova_Pro_Wireless-00.analog-stereo": "",
 			"headphone": "",
             "default": ["", " ", " "]
         },
