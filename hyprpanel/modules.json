@@ -1,0 +1,10 @@
+{
+	"custom/wallpaper": {
+		"icon": "󰸉",
+		"label": "",
+		"tooltop": "Switch wallpaper and theme",
+		"action": {
+			"onLeftClick": "/home/codetex/.config/hypr/scripts/wallpaper.sh"
+		}
+	}
+}
