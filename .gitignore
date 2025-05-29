@@ -1,16 +1,9 @@
-dconf/
 go/
-systemd/
-
-# Audiocontrol
-pipewire/
-rncbc.org/ 
-
-# Thunar (tracking not required)
-Thunar/
+vesktop/
 
 # ZSA keyboard flashing app
 .keymapp/
 wally/
 
 mimeapps.list
+.zhistory

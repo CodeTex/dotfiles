@@ -8,6 +8,8 @@ local opacity = 0.98
 -- Hyprland Compatibility
 config.enable_wayland = false
 
+config.default_prog = { "/usr/bin/zsh", "-i" }
+
 -- Appearance
 config.hide_mouse_cursor_when_typing = true
 config.window_background_opacity = opacity
@@ -94,7 +96,7 @@ config.font = wezterm.font_with_fallback({
 	{ family = 'NotoSans Nerd Font' },
 	{ family = 'JetBrains Nerd Font' }
 }) 
-config.font_size = 11
+config.font_size = 10
 
 config.warn_about_missing_glyphs = true
 
@@ -111,8 +113,8 @@ config.keys = {
 	{ mods = 'LEADER', key = 'x', action = wezterm.action.CloseCurrentPane({ confirm = true }), },
 	{ mods = 'LEADER', key = 'b', action = wezterm.action.ActivateTabRelative(-1), },
 	{ mods = 'LEADER', key = 'n', action = wezterm.action.ActivateTabRelative(1), },
-	{ mods = 'LEADER', key = '|', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
-	{ mods = 'LEADER', key = '-', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }, },
+	{ mods = 'LEADER', key = '.', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
+	{ mods = 'LEADER', key = '/', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }, },
 	{ mods = 'LEADER', key = 'h', action = wezterm.action.ActivatePaneDirection('Left'), },
 	{ mods = 'LEADER', key = 'j', action = wezterm.action.ActivatePaneDirection('Down'), },
 	{ mods = 'LEADER', key = 'k', action = wezterm.action.ActivatePaneDirection('Up'), },

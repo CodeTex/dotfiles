@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+alias cd='z'
+alias zz='z ..'
+
+alias sz='source $ZDOTDIR/.zshrc && echo "zsh configuration reloaded"'
+alias vz='vim $ZDOTDIR/.zshrc'
+alias va='vim $ZDOTDIR/aliases'
+alias vw='vim $XDG_CONFIG_HOME/wezterm/wezterm.lua'
+
+alias ls='eza'
+alias ll='eza -lbF'
+alias la='eza -lbaF'
+alias lt="eza --tree --level=3 -R --group-directories-first --ignore-glob='.cache|.git'"
+alias lta='lt -a'
+
+alias fl="fc-list : family | awk -F ',' '{print \$1}' | sort | uniq"
+
+alias ff='fastfetch'
+alias keymapp='$HOME/applications/keymapp/keymapp'
+
+alias lgit='lazygit'
+alias gc='git clone'
+alias gd='git diff'
+alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
+alias gs='git status --short'
+
