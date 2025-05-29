@@ -1,4 +1,9 @@
+dconf/
+gtk*/
 go/
+htop/
+pulse/cookie
+systemd/
 vesktop/
 
 # ZSA keyboard flashing app
