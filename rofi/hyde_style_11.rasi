@@ -57,7 +57,7 @@ inputbar {
     children:                    [ "entry" ];
     expand:                      false;
     background-color:            @main-bg;
-    background-image:            url("~/.cache/custom/wall.quad", width);
+    background-image:            @wall-quad-url;
     border-radius:               1em 0em 0em 1em;
 }
 entry {

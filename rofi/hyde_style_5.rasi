@@ -65,7 +65,7 @@ listbox {
     orientation:                 horizontal;
     children:                    [ "listview" ];
     background-color:            transparent;
-    background-image:            url("~/.cache/custom/wall.blur", width);
+    background-image:            @wall-blur-url;
 }
 listview {
     padding:                     2em;
