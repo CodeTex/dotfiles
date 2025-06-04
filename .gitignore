@@ -1,3 +1,4 @@
+btop/
 dconf/
 gtk*/
 go/
@@ -11,4 +12,5 @@ vesktop/
 wally/
 
 mimeapps.list
+.zcompdump
 .zhistory

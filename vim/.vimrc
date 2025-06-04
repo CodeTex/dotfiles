@@ -4,6 +4,7 @@ filetype indent on
 
 syntax on
 
+set number
 set relativenumber
 
 set shiftwidth=4

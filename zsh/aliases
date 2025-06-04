@@ -18,6 +18,7 @@ alias fl="fc-list : family | awk -F ',' '{print \$1}' | sort | uniq"
 
 alias ff='fastfetch'
 alias keymapp='$HOME/applications/keymapp/keymapp'
+alias spfc='spf ${HOME}/.config'
 
 alias lgit='lazygit'
 alias gc='git clone'
