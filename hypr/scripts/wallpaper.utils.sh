@@ -141,9 +141,9 @@ check_wallpaper_changes() {
 
 create_symlinks() {
 	local wallpaper_path="$1"
-	local theme_name=$(basename "$(dirname "$wallpaper_path}")")
 	local hash_name=$(generate_hash "$wallpaper_path")
 
+	ln -sf "$wallpaper_path" "$CACHE_DIR/${LINK_FILE_NAME}.original"
 	ln -sf "$WALLPAPERS_CACHE_DIR/${hash_name}.blur" "$CACHE_DIR/${LINK_FILE_NAME}.blur"
 	ln -sf "$WALLPAPERS_CACHE_DIR/${hash_name}.quad" "$CACHE_DIR/${LINK_FILE_NAME}.quad"
 }
@@ -249,7 +249,7 @@ select_wallpaper() {
 	echo "${path_map[$selected]}"
 }
 
-# Set wallpaper using swww
+# Set wallpaper using
 set_wallpaper () {
     local wallpaper_path="$1"
     
