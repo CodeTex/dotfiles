@@ -5,14 +5,14 @@ This is my personal backup for my dotfile configuration files, in case I mess so
 ## Setup
 
 - __OS__: Arch Linux
+- __Display Manager__: Ly
 - __WM__: Hyprland
 - __Shell__: Zsh
 - __Terminal__: Wezterm
 - __Font__: FiraCode Nerd Font
 - __Theme__: Catppuccin Macchiato
-- __Display Manager__: Ly
-- __Notification__: Swaync
-- __Bar__: Waybar
-- __Launcher__:
-- __File Managers__: Thunar (GUI), Superfile (TUI)
+- __Notification__:
+- __Bar__: Hyprpanel
+- __Launcher__: Rofi
+- __File Managers__: Nautilus (GUI), Superfile (TUI)
 - __Wallpaper__: Hyprpaper
