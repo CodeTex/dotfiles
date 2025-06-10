@@ -269,7 +269,7 @@ set_hyprpanel_theme () {
 	
 	if [[ ! -f "$theme_path" ]]; then
 		echo "Error: Hyprpanel theme '$theme_path' not found"
-		return 1
+		$theme_path="/usr/share/hyprpanle/themes/catppuccin_mocha.json"
 	fi
 
 	hyprpanel useTheme "$theme_path"
