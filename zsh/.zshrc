@@ -9,6 +9,9 @@ eval "$(zoxide init zsh)"
 # Clean go cache
 go clean -cache
 
+# Rust setup
+. "$HOME/.cargo/env"
+
 # Load aliases
 source $ZDOTDIR/aliases
 
