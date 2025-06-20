@@ -3,26 +3,45 @@
 alias cd='z'
 alias zz='z ..'
 
-alias sz='source $ZDOTDIR/.zshrc && echo "zsh configuration reloaded"'
-alias vz='vim $ZDOTDIR/.zshrc'
+# source / vim
+alias se='source $ZDOTDIR/.zshenv'
+alias sz='source $ZDOTDIR/.zshrc'
+
 alias va='vim $ZDOTDIR/aliases'
+alias ve='vim $ZDOTDIR/.zshenv'
+alias vh='vim $XDG_CONFIG_HOME/hypr/hyprland.conf'
+alias vk='vim $XDG_CONFIG_HOME/hypr/keybindings.conf'
 alias vw='vim $XDG_CONFIG_HOME/wezterm/wezterm.lua'
+alias vz='vim $ZDOTDIR/.zshrc'
 
+# file system
 alias ls='eza'
-alias ll='eza -lbF'
-alias la='eza -lbaF'
-alias lt="eza --tree --level=3 -R --group-directories-first --ignore-glob='.cache|.git'"
-alias lta='lt -a'
+ll() { eza -lbF -- "$@" }
+la() { eza -lbaF -- "$@" }
+lt() { eza --tree --level=3 -R --group-directories-first --ignore-glob='.cache|.git' "$@" }
+lta() { lt -a "$@" }
 
+# fonts
 alias fl="fc-list : family | awk -F ',' '{print \$1}' | sort | uniq"
 
-alias ff='fastfetch'
-alias keymapp='$HOME/applications/keymapp/keymapp'
-alias spfc='spf ${HOME}/.config'
-
+# git
 alias lgit='lazygit'
 alias gc='git clone'
 alias gd='git diff'
 alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
 alias gs='git status --short'
+
+# docker
+alias dps='docker ps -a'
+alias dls='docker image ls -a'
+alias dcup='docker compose up -d'
+alias dcdown='docker compose down'
+alias dclogs='docker compose logs -f'
+alias dcls='docker compose ps'
+dcbash() { docker compose exec "$@" /bin/bash }
+
+# applications
+alias ff='fastfetch'
+alias keymapp='$HOME/applications/keymapp/keymapp'
+alias spfc='spf ${HOME}/.config'
 
