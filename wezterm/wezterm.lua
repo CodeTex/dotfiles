@@ -94,7 +94,7 @@ config.font = wezterm.font_with_fallback({
 		},
 	},
 	{ family = 'NotoSans Nerd Font' },
-	{ family = 'JetBrains Nerd Font' }
+	{ family = 'Symbola' }
 }) 
 config.font_size = 10
 
