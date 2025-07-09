@@ -14,4 +14,3 @@ set scrolloff=10
 
 set termguicolors
 colorscheme catppuccin_mocha
-

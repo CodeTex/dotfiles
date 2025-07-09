@@ -2,31 +2,31 @@
 theme[main_bg]="#303446"
 
 # Main text color
-theme[main_fg]="#c6d0f5"
+theme[main_fg]="#C6D0F5"
 
 # Title color for boxes
-theme[title]="#c6d0f5"
+theme[title]="#C6D0F5"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#8caaee"
+theme[hi_fg]="#8CAAEE"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#51576d"
+theme[selected_bg]="#51576D"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#8caaee"
+theme[selected_fg]="#8CAAEE"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#838ba7"
+theme[inactive_fg]="#838BA7"
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-theme[graph_text]="#f2d5cf"
+theme[graph_text]="#F2D5CF"
 
 # Background color of the percentage meters
-theme[meter_bg]="#51576d"
+theme[meter_bg]="#51576D"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#f2d5cf"
+theme[proc_misc]="#F2D5CF"
 
 # CPU, Memory, Network, Proc box outline colors
 theme[cpu_box]="#ca9ee6" #Mauve

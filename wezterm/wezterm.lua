@@ -8,7 +8,7 @@ local opacity = 0.98
 -- Hyprland Compatibility
 config.enable_wayland = false
 
-config.default_prog = { "/usr/bin/zsh", "-i" }
+-- config.default_prog = { "/usr/bin/zsh", "-i" }
 
 -- Appearance
 config.hide_mouse_cursor_when_typing = true
@@ -159,3 +159,4 @@ wezterm.on('update-right-status', function(window, _)
 end)
 
 return config
+
