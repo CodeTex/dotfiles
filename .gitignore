@@ -1,0 +1,16 @@
+btop/
+dconf/
+fontforge/
+go/
+pulse/
+systemd/
+unity3d/
+uv/
+wally/
+xfce4/
+
+Thunar/
+WebCord/
+
+mimeapps.list
+pavucontrol.ini
