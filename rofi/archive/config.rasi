@@ -1,0 +1,4 @@
+configuration {
+}
+@import "~/.config/rofi/hyde_style_11.rasi"
+
