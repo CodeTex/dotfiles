@@ -96,7 +96,7 @@ config.font = wezterm.font_with_fallback({
 	{ family = 'NotoSans Nerd Font' },
 	{ family = 'Symbola' }
 }) 
-config.font_size = 10
+config.font_size = 9
 
 config.warn_about_missing_glyphs = true
 
