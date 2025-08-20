@@ -20,19 +20,20 @@ set -g EDITOR vim
 set -g TERM wezterm
 set -g VISUAL vim
 
+set -g WALLPAPER_HOME $HOME/wallpapers
+
 # Abbreviations
 abbr sf source $FISH_CONFIG_HOME/config.fish
 abbr vf $EDITOR $FISH_CONFIG_HOME/config.fish
+abbr vh $EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf
+abbr vhk $EDITOR $XDG_CONFIG_HOME/hypr/keybindings.conf
+abbr vhl $EDITOR $XDG_CONFIG_HOME/hypr/lookandfeel.conf
 abbr vw $EDITOR $XDG_CONFIG_HOME/wezterm/wezterm.lua
 
 abbr cd z
 abbr zz z ..
 
 abbr l eza
-abbr ll eza --header --group-directories-first --long --all
-abbr la eza --header --group-directories-first --long --all
-abbr lt eza --header --group-directories-first --tree --level 2
-abbr lo eza --header --group-directories-first --oneline
 
 abbr fl "fc-list : family | awk -F ',' '{print \$1}' | sort | uniq"
 
@@ -46,6 +47,13 @@ abbr dcls docker compose ps
 
 abbr ff fastfetch
 abbr km $HOME/keymapp/keymapp
+abbr zi yazi
+
+# Aliases
+alias ll="eza --header --group-directories-first --long --all"
+alias la="eza --header --group-directories-first --long --all"
+alias lt="eza --header --group-directories-first --tree --level 2"
+alias lo="eza --header --group-directories-first --oneline"
 
 # Other initializations
 starship init fish | source
