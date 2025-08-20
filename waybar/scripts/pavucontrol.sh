@@ -38,7 +38,7 @@ if [ -n "$desc" ]; then
     device=$(get_device_from_desc "$desc")
     if [ -n "$device" ]; then
         pactl set-default-sink "$device"
-        notify-send "Audio Output Changed" "Changed to $desc"
+        # notify-send "Audio Output Changed" "Changed to $desc"
     else
         notify-send "Error" "Failed to change audio output to $desc"
     fi
