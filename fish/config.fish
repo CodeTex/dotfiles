@@ -26,8 +26,9 @@ set -g WALLPAPER_HOME $HOME/wallpapers
 abbr sf source $FISH_CONFIG_HOME/config.fish
 abbr vf $EDITOR $FISH_CONFIG_HOME/config.fish
 abbr vh $EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf
-abbr vhk $EDITOR $XDG_CONFIG_HOME/hypr/keybindings.conf
-abbr vhl $EDITOR $XDG_CONFIG_HOME/hypr/lookandfeel.conf
+abbr vhk $EDITOR $XDG_CONFIG_HOME/hypr/configs/keybindings.conf
+abbr vhl $EDITOR $XDG_CONFIG_HOME/hypr/configs/lookandfeel.conf
+abbr vhw $EDITOR $XDG_CONFIG_HOME/hypr/configs/workflow.conf
 abbr vw $EDITOR $XDG_CONFIG_HOME/wezterm/wezterm.lua
 
 abbr cd z
