@@ -121,6 +121,8 @@ check_wallpaper_changes() {
         if [[ -d "$theme_dir" ]]; then
             local theme_name=$(basename "$theme_dir")
 
+			echo $theme_name
+
             # Skip excluded themes
             if printf '%s\n' "${EXCLUDED_THEMES[@]}" | grep -q "^${theme_name}$"; then
                 continue

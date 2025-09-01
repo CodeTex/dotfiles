@@ -6,12 +6,13 @@ source "${SCRIPT_DIR}/utils.sh"
 source "${SCRIPT_DIR}/wallpaper.utils.sh"
 
 function main() {
+	
 	check_wallpaper_changes
 	check_removed_wallpapers
 
     # Select a theme
 	selected_theme=$(select_theme)
-    [[ $? -eq 1 ]] && exit 1
+    [[ $? -eq 1 ]] && echo "a" && exit 1
 	echo "Selected theme: $selected_theme"
 
 	# Set bar theme
