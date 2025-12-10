@@ -1,12 +1,25 @@
 # If not running interactively, don't do anything (leave this at the top of this file)
 [[ $- != *i* ]] && return
 
-# All the default Omarchy aliases and functions
-# (don't mess with these directly, just overwrite them here!)
+# All the default Omarchy aliases and functions (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/omarchy/default/bash/rc
 
-# Add your own exports, aliases, and functions here.
-#
-# Make an alias for invoking commands you use constantly
-# alias p='python'
+# ===== Custom Config =====
+
+alias sf='source ~/.bashrc'
+alias vf='$EDITOR ~/.bashrc'
+
+alias ls='eza --long --header --group-directories-first --icons=auto'
+alias la='ls --all'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt --all'
+alias lo='eza --header --group-directories-first --oneline'
+
+alias cm-add='chezmoi git add'
+alias cm-commit='chezmoi git -- commit -m'
+alias cm-status='chezmoi git status'
+alias cm-push='chezmoi git push'
+
+# Initializations
 . "$HOME/.cargo/env"
+
