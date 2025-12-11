@@ -4,7 +4,28 @@
 	"model": "github-copilot/claude-haiku-4.5",
 	"autoupdate": true,
 	"permission": {
-		"bash": "ask",
+		"bash": {
+			"*": "ask",
+			"cd": "allow",
+			"echo": "allow",
+			"fd": "allow",
+			"find": "allow",
+			"fzf": "allow",
+			"git": "deny",
+			"grep": "allow",
+			"ls": "allow",
+			"mkdir": "allow",
+			"pip": "deny",
+			"python -m (pytest|ruff|typos|black)": "allow",
+			"python -m": "deny",
+			"pwd": "allow",
+			"rg": "allow",
+			"rm": "ask",
+			"uv": "deny",
+			".venv/Scripts/activate": "allow",
+			".venv/bin/activate": "allow",
+			"source .venv/bin/activate": "allow"
+		},
 		"webfetch": "deny"
 	}
 }
