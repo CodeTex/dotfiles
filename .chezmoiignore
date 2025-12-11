@@ -3,12 +3,12 @@ README.md
 backups/   # ignore the backups folder, but not its contents
 backups/** # ignore the contents of backups folder but not the folder itself
 
+.config/powershell/*.json
+
 {{- if eq .chezmoi.os "linux" }}
-dot_config/powershell/*
+.config/powershell/*
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
-Documents/*
-!Documents/*PowerShell/ # ignore a folder, except for Windows PowerShell profiles
-dot_bashrc
+.bashrc
 {{- end }}
