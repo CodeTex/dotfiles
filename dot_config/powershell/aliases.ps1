@@ -29,6 +29,12 @@ Set-Alias -Name vpf -Value Get-EditProfileFunctions
 Set-Alias -Name vv -Value Get-EditVim
 Set-Alias -Name vw -Value Get-EditWezterm
 
+# Chezmoi
+Set-Alias -Name ch-add -Value Invoke-ChezmoiGitAdd
+Set-Alias -Name ch-commit -Value Invoke-ChezmoiGitCommit
+Set-Alias -Name ch-push -Value Invoke-ChezmoiGitStatus
+Set-Alias -Name ch-status -Value Invoke-ChezmoiGitPush
+
 # Git
 Set-Alias -Name lgit -Value lazygit
 Set-Alias -Name gcb -Value Clean-GitBranches
@@ -36,6 +42,12 @@ Set-Alias -Name gcl -Value Get-GitClone -Force -Option AllScope
 Set-Alias -Name gs -Value Get-GitStatus -Force -Option AllScope
 Set-Alias -Name gt -Value Get-GitTree -Force -Option AllScope
 Set-Alias -Name gprune -Value Get-RemovePrunedBranches
+
+# Chezmoi
+Set-Alias -Name ch-add -Value Invoke-ChezmoiGitAdd
+Set-Alias -Name ch-commit -Value Invoke-ChezmoiGitCommit
+Set-Alias -Name ch-status -Value Invoke-ChezmoiGitStatus
+Set-Alias -Name ch-push -Value Invoke-ChezmoiGitPush
 
 # Misc
 Set-Alias -Name oc -Value Open-Project
