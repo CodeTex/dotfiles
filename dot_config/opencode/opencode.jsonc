@@ -12,6 +12,8 @@
 			"find": "allow",
 			"fzf": "allow",
 			"git": "deny",
+			"git diff": "allow",
+			"git log": "allow",
 			"grep": "allow",
 			"ls": "allow",
 			"mkdir": "allow",
