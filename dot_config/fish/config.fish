@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+set -gx FISH_CONFIG_HOME $HOME/.config/fish
+
 # Abbreviations
 abbr sf source $FISH_CONFIG_HOME/config.fish
 abbr vf $EDITOR $FISH_CONFIG_HOME/config.fish
@@ -15,6 +17,12 @@ abbr dcls docker compose ps
 
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
+abbr chad chezmoi git add
+abbr chco chezmoi git -- commit -m
+abbr ched chezmoi edit --apply
+abbr chst chezmoi git status
+abbr chpu chezmoi git push
+
 # Aliases
 alias ls="eza --long --header --group-directories-first --icons=auto"
 alias la="ls --all"
@@ -25,16 +33,16 @@ alias lo="eza --header --group-directories-first --oneline"
 alias cd="zd"
 
 function zd --description "Change directory using zoxide"
-	if test (count $argv) -eq 0
-		# No arguments: go to home
-		builtin cd ~ && return
-	else if test -d "$argv[1]"
-		# Argument is valid directory: cd to it
-		builtin cd "argv[1]"
-	else
-		# Use zoxide to navigate, print success or error
-		zoxide $argv && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
-	end
+    if test (count $argv) -eq 0
+        # No arguments: go to home
+        builtin cd ~ && return
+    else if test -d "$argv[1]"
+        # Argument is valid directory: cd to it
+        builtin cd "argv[1]"
+    else
+        # Use zoxide to navigate, print success or error
+        zoxide $argv && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+    end
 end
 
 alias ..="cd .."
@@ -57,4 +65,3 @@ fzf_key_bindings
 function compress --description "Compress a directory into a .tar.gz file"
     tar -czf (string replace -r '/' '' "$argv[1]").tar.gz (string replace -r '/' '' "$argv[1]")
 end
-
