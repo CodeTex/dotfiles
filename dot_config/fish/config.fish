@@ -30,7 +30,7 @@ alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="lt --all"
 alias lo="eza --header --group-directories-first --oneline"
 
-alias cd="zd"
+alias cd="z"
 
 function zd --description "Change directory using zoxide"
     if test (count $argv) -eq 0
