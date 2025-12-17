@@ -35,8 +35,8 @@
   // ============================================================================
   // THEME & WORKBENCH UI
   // ============================================================================
-  "workbench.colorTheme": "Catppuccin Macchiato",
-  "workbench.iconTheme": "catppuccin-macchiato",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
   "workbench.editorAssociations": {
     "*.copilotmd": "vscode.markdown.preview.editor"
   },

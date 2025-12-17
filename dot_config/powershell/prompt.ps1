@@ -6,11 +6,19 @@
 # Test-PowerShellUpdate
 
 # Starship
-if (Get-Command starship -ErrorAction SilentlyContinue) {
-    Invoke-Expression (& starship init powershell)
+# if (Get-Command starship -ErrorAction SilentlyContinue) {
+#     Invoke-Expression (& starship init powershell)
+# } else {
+#     Write-Warning "Starship not found. Install with: winget install starship"
+# }
+
+# Oh My Posh
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+	oh-my-posh init pwsh --config ~\.config\oh-my-posh\themes\spaceship.omp.json | Invoke-Expression
 } else {
-    Write-Warning "Starship not found. Install with: winget install starship"
+	Write-Warning "Starship not found. Install with: winget install starship"
 }
+
 
 # Zoxide
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {
