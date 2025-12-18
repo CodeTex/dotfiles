@@ -1,6 +1,7 @@
 #!/usr/bin/env fish
 
 set -gx FISH_CONFIG_HOME $HOME/.config/fish
+set fish_greeting
 
 # Abbreviations
 abbr sf source $FISH_CONFIG_HOME/config.fish
