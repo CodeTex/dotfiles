@@ -5,6 +5,7 @@ set fish_greeting
 
 # Envars
 set -gx CHEZMOI_HOME $HOME/.local/share/chezmoi
+set -gx HOSTNAME $(hostname)
 
 # Abbreviations
 abbr sf source $FISH_CONFIG_HOME/config.fish
