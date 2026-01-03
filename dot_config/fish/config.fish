@@ -3,6 +3,9 @@
 set -gx FISH_CONFIG_HOME $HOME/.config/fish
 set fish_greeting
 
+# Envars
+set -gx CHEZMOI_HOME $HOME/.local/share/chezmoi
+
 # Abbreviations
 abbr sf source $FISH_CONFIG_HOME/config.fish
 abbr vf $EDITOR $FISH_CONFIG_HOME/config.fish
@@ -16,13 +19,13 @@ abbr dcdn docker compose down
 abbr dclogs docker compose logs -f
 abbr dcls docker compose ps
 
+abbr gs git status
+
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
-abbr chad chezmoi git add
-abbr chco chezmoi git -- commit -m
-abbr ched chezmoi edit --apply
-abbr chst chezmoi git status
-abbr chpu chezmoi git push
+abbr cpd cd $CHEZMOI_HOME && git pull && chezmoi diff
+abbr cpush chezmoi re-add && cd $CHEZMOI_HOME && git add . && git commit -m 'feat: update dotfiles' && git push
+abbr cvim chezmoi edit --apply
 
 # Aliases
 alias ls="eza --long --header --group-directories-first --icons=auto"

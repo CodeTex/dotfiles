@@ -1,3 +1,9 @@
+call plug#begin()
+
+Plug 'njcom/hjkl-remap'
+
+call plug#end()
+
 filetype on
 filetype plugin on
 filetype indent on
