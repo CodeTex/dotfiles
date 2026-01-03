@@ -19,12 +19,12 @@ abbr dcdn docker compose down
 abbr dclogs docker compose logs -f
 abbr dcls docker compose ps
 
-abbr gs git status
+abbr gs "git status"
 
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
-abbr cpd cd $CHEZMOI_HOME && git pull && chezmoi diff
-abbr cpush chezmoi re-add && cd $CHEZMOI_HOME && git add . && git commit -m 'feat: update dotfiles' && git push
+abbr cpd cd $CHEZMOI_HOME && git pull && chezmoi diff && cd $HOME
+abbr cpush chezmoi re-add && cd $CHEZMOI_HOME && git add . && git commit -m 'feat: update dotfiles' && git push && cd $HOME
 abbr cvim chezmoi edit --apply
 
 # Aliases
