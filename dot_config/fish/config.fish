@@ -23,9 +23,11 @@ abbr gs "git status"
 
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
-abbr cpd cd $CHEZMOI_HOME && git pull && chezmoi diff && cd $HOME
-abbr cpush chezmoi re-add && cd $CHEZMOI_HOME && git add . && git commit -m 'feat: update dotfiles' && git push && cd $HOME
-abbr cvim chezmoi edit --apply
+abbr cgs "cd $CHEZMOI_HOME && git status && cd $HOME"
+abbr cra "chezmoi re-add"
+abbr cpd "cd $CHEZMOI_HOME && git pull && chezmoi diff && cd $HOME"
+abbr cpush "chezmoi re-add && cd $CHEZMOI_HOME && git add . && git commit -m 'feat: update dotfiles' && git push && cd $HOME"
+abbr cvim "chezmoi edit --apply"
 
 # Aliases
 alias ls="eza --long --header --group-directories-first --icons=auto"
