@@ -11,12 +11,20 @@ general {
 # }
 
 listener {
-    timeout = 300                      # 5min
+	{{ if eq .chezmoi.hostname "nougat" }}
+    timeout = 600	# 10min
+	{{ else }}
+	timeout = 300	# 5min
+	{{ end }}
     on-timeout = loginctl lock-session # lock screen when timeout has passed
 }
 
 listener {
-    timeout = 330                                            # 5.5min
+	{{ if eq .chezmoi.hostname "nougat" }}
+    timeout = 660	# 11min
+	{{ else }}
+    timeout = 330	# 5.5min
+	{{ end }}
     on-timeout = hyprctl dispatch dpms off                   # screen off when timeout has passed
     on-resume = hyprctl dispatch dpms on && brightnessctl -r # screen on when activity is detected
 }
