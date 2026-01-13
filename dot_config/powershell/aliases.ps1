@@ -30,10 +30,12 @@ Set-Alias -Name vv -Value Get-EditVim
 Set-Alias -Name vw -Value Get-EditWezterm
 
 # Chezmoi
-Set-Alias -Name ch-add -Value Invoke-ChezmoiGitAdd
-Set-Alias -Name ch-commit -Value Invoke-ChezmoiGitCommit
-Set-Alias -Name ch-push -Value Invoke-ChezmoiGitStatus
-Set-Alias -Name ch-status -Value Invoke-ChezmoiGitPush
+Set-Alias -Name cgs -Value Invoke-ChezmoiGitStatus
+Set-Alias -Name cra -Value Invoke-ChezmoiReAdd
+Set-Alias -Name cpa -Value Invoke-ChezmoiPullApply
+Set-Alias -Name cpd -Value Invoke-ChezmoiPullDiff
+Set-Alias -Name cpush -Value Invoke-ChezmoiPush
+Set-Alias -Name cvim -Value Invoke-ChezmoiEditApply
 
 # Git
 Set-Alias -Name lgit -Value lazygit

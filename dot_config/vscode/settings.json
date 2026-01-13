@@ -135,6 +135,7 @@
     "**/build/**",
     "**/.venv/lib/**"
   ],
+  "jupyter.useNotebookEditor": true,
 
   // ============================================================================
   // LANGUAGE-SPECIFIC FORMATTING
