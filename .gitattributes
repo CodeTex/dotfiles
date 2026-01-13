@@ -1,0 +1,6 @@
+# make sure windows specific config files use CRLF
+dot_config/powershell/** text eol=crlf
+
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
