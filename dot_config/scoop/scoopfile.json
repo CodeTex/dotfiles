@@ -1,0 +1,242 @@
+{
+    "apps": [
+        {
+            "Info": "",
+            "Version": "25.01",
+            "Source": "main",
+            "Updated": "2025-11-04T12:01:56.6781448+01:00",
+            "Name": "7zip"
+        },
+        {
+            "Info": "",
+            "Version": "1.67",
+            "Source": "extras",
+            "Updated": "2025-11-27T10:47:28.4456984+01:00",
+            "Name": "altsnap"
+        },
+        {
+            "Info": "",
+            "Version": "0.26.1",
+            "Source": "main",
+            "Updated": "2026-01-14T09:14:33.3419595+01:00",
+            "Name": "bat"
+        },
+        {
+            "Info": "",
+            "Version": "3.0.2",
+            "Source": "extras",
+            "Updated": "2026-01-14T09:14:50.5575088+01:00",
+            "Name": "bruno"
+        },
+        {
+            "Info": "",
+            "Version": "1.0.5",
+            "Source": "main",
+            "Updated": "2025-11-04T11:56:58.5456689+01:00",
+            "Name": "btop-lhm"
+        },
+        {
+            "Info": "",
+            "Version": "2.69.1",
+            "Source": "main",
+            "Updated": "2026-01-14T09:14:53.6654564+01:00",
+            "Name": "chezmoi"
+        },
+        {
+            "Info": "",
+            "Version": "8.18.0_1",
+            "Source": "main",
+            "Updated": "2026-01-14T09:14:59.426511+01:00",
+            "Name": "curl"
+        },
+        {
+            "Info": "",
+            "Version": "3.14.1",
+            "Source": "main",
+            "Updated": "2025-11-04T12:54:35.7360486+01:00",
+            "Name": "dark"
+        },
+        {
+            "Info": "",
+            "Version": "25.3.2",
+            "Source": "extras",
+            "Updated": "2026-01-14T09:15:14.741681+01:00",
+            "Name": "dbeaver"
+        },
+        {
+            "Info": "",
+            "Version": "3.60.1",
+            "Source": "main",
+            "Updated": "2026-01-14T09:13:56.9419586+01:00",
+            "Name": "dvc"
+        },
+        {
+            "Info": "",
+            "Version": "0.23.4",
+            "Source": "main",
+            "Updated": "2025-11-04T12:01:47.9754783+01:00",
+            "Name": "eza"
+        },
+        {
+            "Info": "",
+            "Version": "2.57.0",
+            "Source": "main",
+            "Updated": "2026-01-14T09:15:16.4510015+01:00",
+            "Name": "fastfetch"
+        },
+        {
+            "Info": "",
+            "Version": "10.3.0",
+            "Source": "main",
+            "Updated": "2025-11-04T12:02:38.5556879+01:00",
+            "Name": "fd"
+        },
+        {
+            "Info": "",
+            "Version": "0.67.0",
+            "Source": "main",
+            "Updated": "2025-11-27T10:49:59.653668+01:00",
+            "Name": "fzf"
+        },
+        {
+            "Info": "",
+            "Version": "2.52.0",
+            "Source": "main",
+            "Updated": "2025-11-27T10:50:58.8881711+01:00",
+            "Name": "git"
+        },
+        {
+            "Info": "",
+            "Version": "2.11.0",
+            "Source": "main",
+            "Updated": "2026-01-14T09:15:19.9613168+01:00",
+            "Name": "git-cliff"
+        },
+        {
+            "Info": "",
+            "Version": "2.6.1",
+            "Source": "extras",
+            "Updated": "2025-11-04T12:22:32.8812365+01:00",
+            "Name": "git-credential-manager"
+        },
+        {
+            "Info": "",
+            "Version": "3.7.1",
+            "Source": "main",
+            "Updated": "2025-11-04T12:24:08.4281275+01:00",
+            "Name": "git-lfs"
+        },
+        {
+            "Info": "",
+            "Version": "2.67.0",
+            "Source": "main",
+            "Updated": "2026-01-14T09:15:22.6218431+01:00",
+            "Name": "innounp"
+        },
+        {
+            "Info": "",
+            "Version": "1.8.1",
+            "Source": "main",
+            "Updated": "2025-11-04T12:02:47.6511475+01:00",
+            "Name": "jq"
+        },
+        {
+            "Info": "",
+            "Version": "0.58.1",
+            "Source": "extras",
+            "Updated": "2026-01-14T09:15:24.2783584+01:00",
+            "Name": "lazygit"
+        },
+        {
+            "Info": "",
+            "Version": "2026.1.2",
+            "Source": "main",
+            "Updated": "2026-01-14T09:15:27.8753412+01:00",
+            "Name": "mise"
+        },
+        {
+            "Info": "",
+            "Version": "0.11.5",
+            "Source": "main",
+            "Updated": "2025-11-13T16:22:22.4116873+01:00",
+            "Name": "neovim"
+        },
+        {
+            "Info": "",
+            "Version": "29.0.2",
+            "Source": "main",
+            "Updated": "2026-01-14T09:15:30.9919975+01:00",
+            "Name": "oh-my-posh"
+        },
+        {
+            "Info": "",
+            "Version": "0.96.1",
+            "Source": "extras",
+            "Updated": "2026-01-14T09:05:48.8797109+01:00",
+            "Name": "powertoys"
+        },
+        {
+            "Info": "",
+            "Version": "1.24.2",
+            "Source": "main",
+            "Updated": "2026-01-14T09:09:35.5417531+01:00",
+            "Name": "starship"
+        },
+        {
+            "Info": "",
+            "Version": "4.8.1",
+            "Source": "extras",
+            "Updated": "2026-01-14T09:10:13.589786+01:00",
+            "Name": "treesize-free"
+        },
+        {
+            "Info": "",
+            "Version": "14.50.35719.0",
+            "Source": "extras",
+            "Updated": "2026-01-14T09:15:34.677833+01:00",
+            "Name": "vcredist2022"
+        },
+        {
+            "Info": "",
+            "Version": "9.1.1825",
+            "Source": "main",
+            "Updated": "2025-11-27T10:51:22.6993752+01:00",
+            "Name": "vim"
+        },
+        {
+            "Info": "",
+            "Version": "0.2018.07.25",
+            "Source": "main",
+            "Updated": "2025-11-13T16:22:49.0065288+01:00",
+            "Name": "vimtutor"
+        },
+        {
+            "Info": "",
+            "Version": "1.108.0",
+            "Source": "extras",
+            "Updated": "2026-01-14T09:15:59.8083548+01:00",
+            "Name": "vscode"
+        },
+        {
+            "Info": "",
+            "Version": "0.9.8",
+            "Source": "main",
+            "Updated": "2025-11-04T12:02:01.1226372+01:00",
+            "Name": "zoxide"
+        }
+    ],
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main.git",
+            "Updated": "2026-01-14T05:38:08+01:00",
+            "Manifests": 1418
+        },
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2026-01-14T06:18:46+01:00",
+            "Manifests": 2253
+        }
+    ]
+}

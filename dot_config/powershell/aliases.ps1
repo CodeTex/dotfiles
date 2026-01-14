@@ -45,11 +45,9 @@ Set-Alias -Name gs -Value Get-GitStatus -Force -Option AllScope
 Set-Alias -Name gt -Value Get-GitTree -Force -Option AllScope
 Set-Alias -Name gprune -Value Get-RemovePrunedBranches
 
-# Chezmoi
-Set-Alias -Name ch-add -Value Invoke-ChezmoiGitAdd
-Set-Alias -Name ch-commit -Value Invoke-ChezmoiGitCommit
-Set-Alias -Name ch-status -Value Invoke-ChezmoiGitStatus
-Set-Alias -Name ch-push -Value Invoke-ChezmoiGitPush
+# uv
+Set-Alias -Name uv-sa -Value Invoke-UvScriptAdd
+Set-Alias -Name uv-sr -Value Invoke-UvScriptRun
 
 # Misc
 Set-Alias -Name oc -Value Open-Project
