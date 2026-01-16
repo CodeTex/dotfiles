@@ -1,13 +1,16 @@
 #!/usr/bin/env fish
 
-set -gx FISH_CONFIG_HOME $HOME/.config/fish
 set fish_greeting
 
 # Envars
 set -gx CHEZMOI_HOME $HOME/.local/share/chezmoi
+set -gx FISH_CONFIG_HOME $HOME/.config/fish
 set -gx HOSTNAME $(hostname)
 
+set -gx XDG_MUSIC_DIR $HOME/music
+
 # Abbreviations
+abbr bf bat $FISH_CONFIG_HOME/config.fish
 abbr sf source $FISH_CONFIG_HOME/config.fish
 abbr vf $EDITOR $FISH_CONFIG_HOME/config.fish
 
@@ -24,6 +27,7 @@ abbr gs "git status"
 
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
+abbr cgf "cd $CHEZMOI_HOME && git fetch && git status && cd $HOME"
 abbr cgs "cd $CHEZMOI_HOME && git status && cd $HOME"
 abbr cra "chezmoi re-add"
 abbr cpa "cd $CHEZMOI_HOME && git pull && chezmoi apply && cd $HOME"
