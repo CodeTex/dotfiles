@@ -1,14 +1,13 @@
 #!/usr/bin/env fish
 
+set -gx FISH_CONFIG_HOME $HOME/.config/fish
 set fish_greeting
 
 # Envars
 set -gx CHEZMOI_HOME $HOME/.local/share/chezmoi
-set -gx FISH_CONFIG_HOME $HOME/.config/fish
 set -gx HOSTNAME $(hostname)
 
 # Abbreviations
-abbr bf bat $FISH_CONFIG_HOME/config.fish
 abbr sf source $FISH_CONFIG_HOME/config.fish
 abbr vf $EDITOR $FISH_CONFIG_HOME/config.fish
 
