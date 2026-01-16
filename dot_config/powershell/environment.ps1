@@ -2,8 +2,13 @@
 # ENVIRONMENT VARIABLES
 # ============================================
 
+# General
 $ENV:EDITOR = "vim"
 
+# PowerShell
+$ENV:PWSH_HOME = "$HOME\.config\powershell"
+
+# Vim
 $ENV:MYVIMRC = "$HOME\.config\vim\.vimrc"
 
 # Starship
@@ -28,6 +33,10 @@ $ENV:FZF_DEFAULT_OPTS = @'
 --height 40%
 --preview="bat -n --color=always {}"
 '@
+
+# uv
+$UV_CACHE_DIR = "$HOME\AppData\Local\uv\cache"
+$UV_CACHE_ENV_DIR = "$UV_CACHE_DIR\environments-v2"
 
 # Locale (for LazyVim)
 $ENV:LANG = "$((Get-Culture).Name).UTF-8"
