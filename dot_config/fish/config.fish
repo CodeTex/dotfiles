@@ -51,7 +51,7 @@ alias lo="eza --header --group-directories-first --oneline"
 
 alias cd="z"
 
-function cd --description "Change directory using zoxide"
+function zd --description "Change directory using zoxide"
     if test (count $argv) -eq 0
         # No arguments: go to home
         builtin cd ~ && return
