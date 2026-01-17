@@ -70,6 +70,8 @@ alias ....="cd ../../.."
 
 alias decompress="tar -xzf"
 
+# alias tracknew="comm -13 <(sort $HOME/.config/yay/pkglist_baseline.txt) <(pacman -Qe | awk '{print \$1}' | sort) >>$HOME/.config/yay/pkglist.txt"
+
 # Initializations
 mise activate fish | source
 
