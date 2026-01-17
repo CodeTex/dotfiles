@@ -23,7 +23,11 @@ abbr dcdn docker compose down
 abbr dclogs docker compose logs -f
 abbr dcls docker compose ps
 
+abbr g git
 abbr gs "git status"
+abbr gcm "git commit -m"
+abbr gcam "git commit -a -m"
+abbr gcad "gitt commit -a --amend"
 
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
@@ -42,9 +46,12 @@ alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="lt --all"
 alias lo="eza --header --group-directories-first --oneline"
 
+# alias d="docker"
+# alias r="rails"
+
 alias cd="z"
 
-function zd --description "Change directory using zoxide"
+function cd --description "Change directory using zoxide"
     if test (count $argv) -eq 0
         # No arguments: go to home
         builtin cd ~ && return
@@ -59,6 +66,7 @@ end
 
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
 
 alias decompress="tar -xzf"
 
