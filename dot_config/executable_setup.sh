@@ -20,6 +20,7 @@ packages=(
 post_commands=(
 	# "chezmoi init --apply CodeTex"
 	"chsh -s /usr/bin/fish"
+	"cp -r $HOME/.config/fonts/* $HOME/.local/share/fonts" 
 	"echo 'Post-installation commands completed!'"
 )
 
