@@ -248,5 +248,6 @@
   "telemetry.telemetryLevel": "off",
   "redhat.telemetry.enabled": false,
   "chat.mcp.gallery.enabled": true,
-  "update.mode": "manual"
+  "update.mode": "manual",
+  "github.copilot.nextEditSuggestions.enabled": true
 }

@@ -6,11 +6,11 @@
 # Test-PowerShellUpdate
 
 # Starship
-if (Get-Command starship -ErrorAction SilentlyContinue) {
-    Invoke-Expression (& starship init powershell)
-} else {
-    Write-Warning "Starship not found. Install with: winget install starship"
-}
+# if (Get-Command starship -ErrorAction SilentlyContinue) {
+#     Invoke-Expression (& starship init powershell)
+# } else {
+#     Write-Warning "Starship not found. Install with: winget install starship"
+# }
 
 # Oh My Posh
 # if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {

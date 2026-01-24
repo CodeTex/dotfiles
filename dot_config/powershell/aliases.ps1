@@ -16,8 +16,12 @@ Set-Alias -Name lt -Value Get-EzaTree -Option AllScope
 
 # System
 Set-Alias -Name df -Value Get-Volume
-Set-Alias -Name touch -Value New-File
 Set-Alias -Name which -Value Show-Command
+
+# File Explorer
+Set-Alias -Name cpc -Value Copy-FileContent
+Set-Alias -Name cpf -Value Copy-ItemToClipboard
+Set-Alias -Name touch -Value New-File
 
 # Config editing
 Set-Alias -Name sf -Value Reload-Profile
