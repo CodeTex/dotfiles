@@ -1,16 +1,13 @@
 #!/usr/bin/env fish
 
+set -gx FISH_CONFIG_HOME $HOME/.config/fish
 set fish_greeting
 
 # Envars
 set -gx CHEZMOI_HOME $HOME/.local/share/chezmoi
-set -gx FISH_CONFIG_HOME $HOME/.config/fish
 set -gx HOSTNAME $(hostname)
 
-set -gx XDG_MUSIC_DIR $HOME/music
-
 # Abbreviations
-abbr bf bat $FISH_CONFIG_HOME/config.fish
 abbr sf source $FISH_CONFIG_HOME/config.fish
 abbr vf $EDITOR $FISH_CONFIG_HOME/config.fish
 
@@ -23,15 +20,10 @@ abbr dcdn docker compose down
 abbr dclogs docker compose logs -f
 abbr dcls docker compose ps
 
-abbr g git
 abbr gs "git status"
-abbr gcm "git commit -m"
-abbr gcam "git commit -a -m"
-abbr gcad "gitt commit -a --amend"
 
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
-abbr cgf "cd $CHEZMOI_HOME && git fetch && git status && cd $HOME"
 abbr cgs "cd $CHEZMOI_HOME && git status && cd $HOME"
 abbr cra "chezmoi re-add"
 abbr cpa "cd $CHEZMOI_HOME && git pull && chezmoi apply && cd $HOME"
@@ -45,9 +37,6 @@ alias la="ls --all"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="lt --all"
 alias lo="eza --header --group-directories-first --oneline"
-
-# alias d="docker"
-# alias r="rails"
 
 alias cd="z"
 
@@ -66,11 +55,8 @@ end
 
 alias ..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
 
 alias decompress="tar -xzf"
-
-# alias tracknew="comm -13 <(sort $HOME/.config/yay/pkglist_baseline.txt) <(pacman -Qe | awk '{print \$1}' | sort) >>$HOME/.config/yay/pkglist.txt"
 
 # Initializations
 mise activate fish | source

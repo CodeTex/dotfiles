@@ -1,40 +1,68 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "rosepine",
-  "model": "github-copilot/claude-sonnet-4.5",
+  "model": "github-copilot/gpt-5.2",
   "autoupdate": true,
+  "share": "disabled",
   "permission": {
+    "*": "ask",
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "edit": "allow",
+    "webfetch": "allow",
     "bash": {
       "*": "ask",
-      "cd": "allow",
-      "echo": "allow",
-      "fd": "allow",
-      "find": "allow",
-      "findstr": "allow",
-      "fzf": "allow",
-      "git": "deny",
-      "git diff": "allow",
-      "git log": "allow",
-      "grep": "allow",
-      "head": "allow",
-      "ls": "allow",
-      "mkdir": "allow",
-      "pip": "deny",
-      "pytest": "allow",
-      "python -m (pytest|ruff|ty|black)": "allow",
-      "python -m": "deny",
-      "pwd": "allow",
-      "rg": "allow",
-      "ruff": "allow",
-      "rm": "ask",
-      "tail": "allow",
-      "ty check": "allow",
-      "wc": "allow",
-      "uv": "deny",
-      ".venv/Scripts/activate": "allow",
-      ".venv/bin/activate": "allow",
-      "source .venv/bin/activate": "allow",
-    },
-    "webfetch": "deny",
-  },
+
+      // --- Allow: read-only commands ---
+      "ls *": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "fd *": "allow",
+      "rg *": "allow",
+
+      // --- Allow: git read-only ---
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "git branch*": "allow",
+      "git show*": "allow",
+
+      // --- Allow: testing & linting ---
+      "pytest*": "allow",
+      "ruff*": "allow",
+      "cargo check*": "allow",
+      "cargo test*": "allow",
+      "go test*": "allow",
+
+      // --- Allow: package inspection ---
+      "pip list*": "allow",
+      "uv pip list*": "allow",
+      "cargo tree*": "allow",
+      "go list*": "allow",
+      "npm list*": "allow",
+
+      // --- Deny: dangerous git ---
+      "git pu*": "deny",
+      "git fetch*": "deny",
+      "git reset*": "deny",
+      "git clean*": "deny",
+
+      // --- Deny: package modifications ---
+      "pip *": "deny",
+      "uv *": "deny",
+      "cargo add*": "deny",
+      "cargo install*": "deny",
+      "cargo remove*": "deny",
+      "go *": "deny",
+      "npm *": "deny",
+
+      // --- Deny: personal tools ---
+      "chezmoi *": "deny",
+      "mise *": "deny",
+      "scoop *": "deny"
+    }
+  }
 }

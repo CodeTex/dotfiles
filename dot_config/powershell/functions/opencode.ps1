@@ -1,3 +1,7 @@
+# ============================================
+# PROJECT REGISTRY MANAGEMENT
+# ============================================
+
 function Open-Project {
     <#
     .SYNOPSIS
@@ -252,9 +256,13 @@ function Open-Project {
         }
         
         'Open' {
+            # If no name provided, just open current directory with opencode
             if (-not $Name) {
-                Write-Host "Usage: Open-Project <name>" -ForegroundColor Yellow
-                Write-Host "Try: Open-Project -List" -ForegroundColor Yellow
+                if (Get-Command opencode -ErrorAction SilentlyContinue) {
+                    opencode .
+                } else {
+                    Write-Error "opencode command not found. Please ensure it's installed and in your PATH."
+                }
                 return
             }
             

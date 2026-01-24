@@ -2,12 +2,18 @@
 # UTILITY FUNCTIONS
 # ============================================
 
-function note {
+function New-Note {
     <#
     .SYNOPSIS
-        Quick note taking with nvim.
+        Create and edit note file with nvim
+    .DESCRIPTION
+        Creates directory structure and note file if needed, then opens in nvim
+    .PARAMETER FileName
+        Note file name or path relative to Notes directory
     .EXAMPLE
-        note daily/2024-01-15.md
+        New-Note daily.md
+    .EXAMPLE
+        New-Note journal/2024-01-15.md
     #>
     [CmdletBinding()]
     param (
@@ -32,16 +38,21 @@ function note {
     }
 
     Push-Location -Path $NotesDir
-    nvim $FilePath
+    if (Get-Command nvim -ErrorAction SilentlyContinue) {
+        nvim $FilePath
+    } else {
+        Write-Error "nvim not found. Install with: scoop install neovim"
+        return
+    }
     Pop-Location
 }
 
 function Test-PowerShellUpdate {
     <#
     .SYNOPSIS
-        Check for PowerShell updates and display minimal notification.
+        Check for PowerShell updates asynchronously
     .DESCRIPTION
-        Runs asynchronously in background. Shows custom symbol + version if update available.
+        Checks GitHub for latest PowerShell release and displays notification if update available.
         Only checks once per session.
     .EXAMPLE
         Test-PowerShellUpdate
@@ -67,7 +78,6 @@ function Test-PowerShellUpdate {
             # Silently fail if offline or timeout
         }
     } | Receive-Job -Wait -AutoRemoveJob | ForEach-Object {
-        # Customize this line with your preferred style
         Write-Host "󰁔 󰚰 $($_)" -ForegroundColor Yellow
     }
 }

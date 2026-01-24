@@ -2,46 +2,62 @@
 # GIT FUNCTIONS
 # ============================================
 
-function Get-GitClone {
+function Invoke-GitClone {
     <#
     .SYNOPSIS
-        Git clone wrapper. Alias: gcl
+        Clone a Git repository to local machine
+    .EXAMPLE
+        Invoke-GitClone https://github.com/user/repo
     #>
     git clone $args
 }
 
-function Get-GitStatus {
+function Show-GitStatus {
     <#
     .SYNOPSIS
-        Git status short format. Alias: gs
+        Display Git repository status in short format
+    .EXAMPLE
+        Show-GitStatus
     #>
     git status -sb $args
 }
 
-function Get-GitTree {
+function Show-GitTree {
     <#
     .SYNOPSIS
-        Git log tree view. Alias: gt
+        Display Git commit history as tree
+    .EXAMPLE
+        Show-GitTree
     #>
     git log --graph --oneline --decorate $args
 }
 
-function Get-RemovePrunedBranches {
+function Remove-PrunedBranches {
     <#
     .SYNOPSIS
-        Remove local branches with gone remotes. Alias: gprune
+        Remove local branches with gone remote tracking
+    .DESCRIPTION
+        Removes local branches whose remote tracking branches no longer exist
+    .EXAMPLE
+        Remove-PrunedBranches
     #>
     git branch --list --format "%(if:equals=[gone])%(upstream:track)%(then)%(refname:short)%(end)" |
         Where-Object { $_ -ne "" } |
         ForEach-Object { git branch -d $_ }
 }
 
-function Clean-GitBranches {
+function Clear-GitBranches {
     <#
     .SYNOPSIS
-        Clean up local branches without valid remote tracking.
+        Clean up local branches without valid remote tracking
+    .DESCRIPTION
+        Interactive cleanup of branches with gone remotes or no remote tracking
     .PARAMETER Force
-        Skip confirmation prompt.
+        Skip confirmation prompt
+    .EXAMPLE
+        Clear-GitBranches
+    .EXAMPLE
+        Clear-GitBranches -Force
     #>
     [CmdletBinding()]
     param (
@@ -115,10 +131,19 @@ function Clean-GitBranches {
 function Get-GitHubContent {
     <#
     .SYNOPSIS
-        Download files from GitHub repository. Alias: ghc
+        Download files from GitHub repository
+    .DESCRIPTION
+        Downloads files from a GitHub repository URL using GitHub API
+    .PARAMETER Url
+        GitHub repository URL
+    .PARAMETER OutputPath
+        Local directory to save files
+    .PARAMETER Token
+        GitHub personal access token for private repositories
     .EXAMPLE
-        ghc https://github.com/username/repo-name/tree/main/path/to/folder
-        ghc https://github.com/username/repo-name/tree/main/path/to/folder C:\Downloads
+        Get-GitHubContent https://github.com/user/repo/tree/main/path
+    .EXAMPLE
+        Get-GitHubContent https://github.com/user/repo/tree/main/path C:\Downloads
     #>
     param (
         [Parameter(Mandatory, Position = 0)]
@@ -137,9 +162,6 @@ function Get-GitHubContent {
         }
         
         # Parse the GitHub URL
-        # Expected format: https://github.com/user/repo/tree/branch/path/to/folder
-        # or: https://github.com/user/repo/blob/branch/path/to/file
-        
         if ($Url -match 'github\.com/([^/]+)/([^/]+)/(tree|blob)/[^/]+/(.+)') {
             $User = $matches[1]
             $Repository = $matches[2] -replace '\.git$', ''
@@ -157,9 +179,11 @@ function Get-GitHubContent {
         
         $baseUrl = "https://api.github.com/repos/$User/$Repository/contents/$Path"
         
-        $headers = @()
+        $headers = @{
+            'Accept' = 'application/vnd.github.v3+json'
+        }
         if ($Token) {
-            $headers += "-H", "Authorization: token $Token"
+            $headers['Authorization'] = "token $Token"
         }
     }
     
@@ -167,11 +191,7 @@ function Get-GitHubContent {
         try {
             Write-Host "Fetching content from: $baseUrl" -ForegroundColor Cyan
             
-            $response = if ($Token) {
-                curl.exe -s $headers $baseUrl | ConvertFrom-Json
-            } else {
-                curl.exe -s $baseUrl | ConvertFrom-Json
-            }
+            $response = Invoke-RestMethod -Uri $baseUrl -Headers $headers
             
             $files = @()
             if ($response -is [Array]) {
@@ -186,11 +206,7 @@ function Get-GitHubContent {
                 $outputFile = Join-Path $OutputPath $file.name
                 Write-Host "Downloading: $($file.name) -> $outputFile" -ForegroundColor Green
                 
-                if ($Token) {
-                    curl.exe -s -L $headers -o $outputFile $file.download_url
-                } else {
-                    curl.exe -s -L -o $outputFile $file.download_url
-                }
+                Invoke-WebRequest -Uri $file.download_url -OutFile $outputFile -Headers $headers
             }
             
             Write-Host "Download completed! Files saved to: $OutputPath" -ForegroundColor Green

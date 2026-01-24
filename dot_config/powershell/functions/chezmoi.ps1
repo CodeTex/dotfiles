@@ -2,52 +2,99 @@
 # CHEZMOI FUNCTIONS
 # ============================================
 
-# Get Chezmoi home directory
-$CHEZMOI_HOME = chezmoi source-path
+# Lazy-load Chezmoi home directory
+function Get-ChezmoiHome {
+    if (-not $script:ChezmoiHome) {
+        $script:ChezmoiHome = chezmoi source-path
+    }
+    return $script:ChezmoiHome
+}
 
-# cgs - Chezmoi Git Status
-function Invoke-ChezmoiGitStatus {
-    Push-Location $CHEZMOI_HOME
+function Show-ChezmoiStatus {
+    <#
+    .SYNOPSIS
+        Display Git status of chezmoi source directory
+    .EXAMPLE
+        Show-ChezmoiStatus
+    #>
+    Push-Location (Get-ChezmoiHome)
     git status
     Pop-Location
 }
 
-# cra - Chezmoi Re-Add
-function Invoke-ChezmoiReAdd {
+function Update-ChezmoiFiles {
+    <#
+    .SYNOPSIS
+        Re-add modified files to chezmoi
+    .EXAMPLE
+        Update-ChezmoiFiles ~/.vimrc
+    #>
     chezmoi re-add @args
 }
 
-# cpa - Chezmoi Pull and Apply
-function Invoke-ChezmoiPullApply {
-    Push-Location $CHEZMOI_HOME
+function Sync-ChezmoiFromRemote {
+    <#
+    .SYNOPSIS
+        Pull latest changes from remote and apply to system
+    .DESCRIPTION
+        Pulls latest changes from Git remote and applies them using chezmoi
+    .EXAMPLE
+        Sync-ChezmoiFromRemote
+    #>
+    Push-Location (Get-ChezmoiHome)
     git pull
     Pop-Location
     chezmoi apply
 }
 
-# cpd - Chezmoi Pull and Diff
-function Invoke-ChezmoiPullDiff {
-    Push-Location $CHEZMOI_HOME
+function Show-ChezmoiChanges {
+    <#
+    .SYNOPSIS
+        Pull latest changes and show diff without applying
+    .DESCRIPTION
+        Pulls latest changes from Git remote and displays differences
+    .EXAMPLE
+        Show-ChezmoiChanges
+    #>
+    Push-Location (Get-ChezmoiHome)
     git pull
     Pop-Location
     chezmoi diff
 }
 
-# cpush - Chezmoi Push (re-add, commit, push)
-function Invoke-ChezmoiPush {
+function Publish-ChezmoiChanges {
+    <#
+    .SYNOPSIS
+        Commit and push chezmoi changes to remote
+    .DESCRIPTION
+        Re-adds modified files, commits with message, and pushes to remote
+    .PARAMETER Message
+        Commit message
+    .EXAMPLE
+        Publish-ChezmoiChanges
+    .EXAMPLE
+        Publish-ChezmoiChanges -Message "Update vim config"
+    #>
     param(
         [string]$Message = "feat: update dotfiles"
     )
     
     chezmoi re-add
-    Push-Location $CHEZMOI_HOME
+    Push-Location (Get-ChezmoiHome)
     git add .
     git commit -m $Message
     git push
     Pop-Location
 }
 
-# cvim - Chezmoi Edit with Apply
-function Invoke-ChezmoiEditApply {
+function Edit-ChezmoiFile {
+    <#
+    .SYNOPSIS
+        Edit chezmoi-managed file and apply changes
+    .DESCRIPTION
+        Opens file in editor and automatically applies changes after editing
+    .EXAMPLE
+        Edit-ChezmoiFile ~/.vimrc
+    #>
     chezmoi edit --apply @args
 }

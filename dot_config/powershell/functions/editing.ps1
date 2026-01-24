@@ -2,58 +2,72 @@
 # EDITOR FUNCTIONS
 # ============================================
 
-function Get-EditProfile {
+function Edit-PowerShellProfile {
     <#
     .SYNOPSIS
-        Edit PowerShell profile. Alias: vp
+        Open PowerShell profile in default editor
+    .EXAMPLE
+        Edit-PowerShellProfile
     #>
     & $ENV:EDITOR "$HOME\.config\powershell\profile.ps1"
 }
 
-function Get-EditProfileAliases {
+function Edit-PowerShellAliases {
     <#
     .SYNOPSIS
-        Edit PowerShell profile aliases. Alias: vpa
+        Open PowerShell aliases configuration in default editor
+    .EXAMPLE
+        Edit-PowerShellAliases
     #>
     & $ENV:EDITOR "$HOME\.config\powershell\aliases.ps1"
 }
 
-function Get-EditProfileEnv {
+function Edit-PowerShellEnvironment {
     <#
     .SYNOPSIS
-        Edit PowerShell profile environment variables. Alias: vpe
+        Open PowerShell environment variables configuration in default editor
+    .EXAMPLE
+        Edit-PowerShellEnvironment
     #>
     & $ENV:EDITOR "$HOME\.config\powershell\environment.ps1"
 }
 
-function Get-EditProfilePrompt {
+function Edit-PowerShellPrompt {
     <#
     .SYNOPSIS
-        Edit PowerShell profile prompt configuration. Alias: vpp
+        Open PowerShell prompt configuration in default editor
+    .EXAMPLE
+        Edit-PowerShellPrompt
     #>
     & $ENV:EDITOR "$HOME\.config\powershell\prompt.ps1"
 }
 
-function Get-EditProfileFunctions {
+function Edit-PowerShellFunctions {
     <#
     .SYNOPSIS
-        Edit PowerShell profile functions. Alias: vpf
+        Open PowerShell functions directory in default editor
+    .EXAMPLE
+        Edit-PowerShellFunctions
     #>
     & $ENV:EDITOR "$HOME\.config\powershell\functions"
 }
 
-function Get-EditVim {
+function Edit-VimConfig {
     <#
     .SYNOPSIS
-        Edit Vim config. Alias: vv
+        Open Vim configuration in default editor
+    .EXAMPLE
+        Edit-VimConfig
     #>
     & $ENV:EDITOR "$ENV:USERPROFILE\.config\vim\.vimrc"
 }
 
-function Get-EditWezterm {
+function Edit-WeztermConfig {
     <#
     .SYNOPSIS
-        Edit WezTerm config. Alias: vw
+        Open WezTerm configuration in default editor
+    .EXAMPLE
+        Edit-WeztermConfig
     #>
     & $ENV:EDITOR "$ENV:USERPROFILE\.config\wezterm\wezterm.lua"
 }
