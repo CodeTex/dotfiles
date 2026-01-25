@@ -31,8 +31,12 @@
       "git show*": "allow",
 
       // --- Allow: testing & linting ---
+      "*python -m pytest*": "allow",
       "pytest*": "allow",
+      "*python -m ruff*": "allow",
       "ruff*": "allow",
+      "*python -m ty*": "allow",
+      "ty*": "allow",
       "cargo check*": "allow",
       "cargo test*": "allow",
       "go test*": "allow",

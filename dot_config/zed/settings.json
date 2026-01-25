@@ -1,12 +1,14 @@
-// Zed settings
 {
-  // General
+  "auto_update": false,
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
   },
-  // Appearance
-  "icon_theme": "Catppuccin Mocha",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Macchiato",
+    "dark": "Catppuccin Mocha",
+  },
   "theme": {
     "mode": "system",
     "light": "Catppuccin Macchiato",
@@ -17,31 +19,22 @@
   "ui_font_family": ".SystemUIFont",
   "ui_font_weight": 400,
   "ui_font_size": 14,
-  // Keymap
   "vim_mode": false,
-  // Languages & Tools
   "languages": {
     "Python": {
       "language_servers": ["ty", "ruff", "!basedpyright"],
       "format_on_save": "on",
       "code_actions_on_format": {
-        // Organize imports
         "source.organizeImports.ruff": true,
-        // Fix all auto-fixable lint violations
         "source.fixAll.ruff": true,
       },
     },
   },
-  // Terminal
   "terminal": {
     "font_family": "FiraCode Nerd Font Mono",
     "font_size": 10,
   },
-  // AI
-  "agent_servers": {
-    "OpenCode": {
-      "command": "opencode",
-      "args": ["acp"],
-    },
-  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  }
 }
