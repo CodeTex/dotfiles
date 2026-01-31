@@ -8,7 +8,10 @@ packages=(
 	fish
 	fzf
 	# git
+  hatch
+  just
 	ripgrep
+  uv
 	vim
 	zoxide
 
