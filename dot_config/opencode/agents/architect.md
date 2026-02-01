@@ -1,14 +1,15 @@
 ---
+description: Analyzes, discusses, and documents architectural decisions—focusing on simplicity, trade-offs, and context-aware recommendations
 mode: subagent
 model: github-copilot/gpt-5.2
 temperature: 0.4
 tools:
-  read: true
-  glob: true
-  grep: true
   write: true
   edit: true
   bash: true
+  read: true
+  glob: true
+  grep: true
   webfetch: false
   task: false
 ---

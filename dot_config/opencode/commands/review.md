@@ -1,14 +1,18 @@
 ---
-description: Quick code review with actionable feedback
+description: Actionable code review for a file, snippet, or focus area (optionally accepts a focus, e.g., `/review security`).
 ---
 
-Review the following code. Be direct and focus on:
+# Code Review Command
 
-1. **Bugs or correctness issues** (highest priority)
-2. **Unclear or misleading code** (readability)
-3. **Missed edge cases** (robustness)
-4. **Unnecessary complexity** (simplification opportunities)
-
-Skip praise. Skip style nitpicks unless they hurt readability. If the code is fine, say so briefly.
+- Pass the code, filename, or paste a snippet as the main argument.
+- Optionally add a focus topic (e.g. `/review security`, `/review performance`).
+- The reviewer will:
+  1. Prioritize bugs/correctness issues (quickly highlight high-severity problems)
+  2. Highlight unclear/misleading code (readability/logic)
+  3. Flag missed edge cases (robustness)
+  4. Call out unnecessary complexity (simplification)
+  5. Address focus area, if provided (e.g., security or performance)
+- Skip praise and minor nitpicks unless they directly hurt readability or correctness.
+- If file/code is good, just say so concisely!
 
 $ARGUMENTS

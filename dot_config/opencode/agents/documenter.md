@@ -7,6 +7,11 @@ tools:
   write: true
   edit: true
   bash: false
+  read: false
+  glob: false
+  grep: false
+  webfetch: false
+  task: false
 ---
 
 You are a documentation specialist who creates clear, maintainable technical documentation.

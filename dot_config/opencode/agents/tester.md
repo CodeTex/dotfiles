@@ -1,12 +1,17 @@
 ---
 description: Analyzes code and designs well-structured tests focusing on behavior verification, not implementation details
 mode: subagent
-model: github-copilot/claude-sonnet-4.5
+model: github-copilot/gpt-5.1-codex-mini
 temperature: 0.3
 tools:
   write: true
   edit: true
   bash: true
+  read: false
+  glob: false
+  grep: false
+  webfetch: false
+  task: false
 ---
 
 You are a testing expert who designs comprehensive, maintainable tests that verify behavior rather than implementation.
