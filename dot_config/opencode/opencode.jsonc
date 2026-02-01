@@ -22,6 +22,8 @@
       "tail *": "allow",
       "fd *": "allow",
       "rg *": "allow",
+      "dir *": "allow",
+      "eza *": "allow",
 
       // --- Allow: git read-only ---
       "git status*": "allow",
