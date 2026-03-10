@@ -1,7 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "rosepine",
-  "model": "github-copilot/gpt-4.1",
+  "model": "github-copilot/gpt-5-mini",
   "autoupdate": true,
   "share": "disabled",
   "permission": {
@@ -18,12 +17,13 @@
       // --- Allow: read-only commands ---
       "ls *": "allow",
       "cat *": "allow",
-      "head *": "allow",
-      "tail *": "allow",
-      "fd *": "allow",
-      "rg *": "allow",
       "dir *": "allow",
       "eza *": "allow",
+	  "find*": "allow",
+      "fd *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "rg *": "allow",
 
       // --- Allow: git read-only ---
       "git status*": "allow",

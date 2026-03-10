@@ -256,7 +256,7 @@ function Open-Project {
         }
         
         'Open' {
-            # If no name provided, just open current directory with opencode
+            # If no name provided, open current directory with opencode
             if (-not $Name) {
                 if (Get-Command opencode -ErrorAction SilentlyContinue) {
                     opencode .
@@ -265,11 +265,43 @@ function Open-Project {
                 }
                 return
             }
-            
+
+            # If the provided Name resolves to a filesystem path, treat it as a path to open.
+            $resolved = Resolve-Path -Path $Name -ErrorAction SilentlyContinue
+            if ($resolved) {
+                $projectPath = $resolved.Path
+
+                # If it's a file, use the parent directory
+                if (-not (Test-Path $projectPath -PathType Container) -and (Test-Path $projectPath)) {
+                    $projectPath = Split-Path $projectPath -Parent
+                }
+
+                if (-not (Test-Path $projectPath)) {
+                    Write-Host "✗ Path not found: $Name" -ForegroundColor Red
+                    return
+                }
+
+                # Track in recent (use the literal input as name, or you could derive a nicer name)
+                Add-RecentEntry -Name $Name -Path $projectPath
+
+                Write-Host "Opening '$projectPath' with opencode..." -ForegroundColor Green
+
+                if (Get-Command opencode -ErrorAction SilentlyContinue) {
+                    Set-Location $projectPath
+                    opencode
+                } else {
+                    Write-Host "✗ 'opencode' command not found. Please ensure it's installed and in your PATH." -ForegroundColor Red
+                    Write-Host "Navigating to project directory instead..." -ForegroundColor Yellow
+                    Set-Location $projectPath
+                }
+                return
+            }
+
+            # Otherwise treat $Name as a registered project name (existing behavior)
             $registry = Get-Registry
-            
+
             $projectPath = $registry.projects.$Name
-            
+
             if (-not $projectPath) {
                 Write-Host "✗ Project '$Name' not found in registry" -ForegroundColor Red
                 Write-Host "Available projects:" -ForegroundColor Yellow
@@ -278,19 +310,19 @@ function Open-Project {
                 }
                 return
             }
-            
+
             if (-not (Test-Path $projectPath)) {
                 Write-Host "✗ Project path no longer exists: $projectPath" -ForegroundColor Red
                 Write-Host "Consider removing it with: Open-Project -Remove $Name" -ForegroundColor Yellow
                 return
             }
-            
+
             # Track in recent
             Add-RecentEntry -Name $Name -Path $projectPath
-            
+
             # Open with opencode
             Write-Host "Opening '$Name' with opencode..." -ForegroundColor Green
-            
+
             if (Get-Command opencode -ErrorAction SilentlyContinue) {
                 Set-Location $projectPath
                 opencode

@@ -35,8 +35,8 @@
   // ============================================================================
   // THEME & WORKBENCH UI
   // ============================================================================
-  "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.colorTheme": "Catppuccin Macchiato",
+  "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.editorAssociations": {
     "*.copilotmd": "vscode.markdown.preview.editor"
   },
@@ -61,8 +61,6 @@
     "**/.mypy_cache": true,
     "**/.ruff_cache": true,
     "**/.pytest_cache": true,
-    "**/build": false,
-    "**/dist": false
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -70,7 +68,7 @@
     "**/node_modules/**": true,
     "**/venv/**": true,
     "**/.venv/**": true,
-    "**/*_cache*": true
+    "**/*_cache*": true,
   },
 
   // ============================================================================
@@ -114,6 +112,11 @@
     "azure-pipelines": false
   },
   "github.copilot.editor.enableCodeActions": false,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Follow the conventional commit message format. Don't use newline, use maximum of 200 characters."
+    }
+  ],
 
   // ============================================================================
   // EXTENSION TOOLS - CODE FORMATTING & ANALYSIS
@@ -130,12 +133,6 @@
   // ============================================================================
   "python.createEnvironment.trigger": "off",
   "python.defaultInterpreterPath": "c:\\Users\\z003z8wr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
-  "python.analysis.exclude": [
-    "**/.venv/**",
-    "**/build/**",
-    "**/.venv/lib/**"
-  ],
-  "jupyter.useNotebookEditor": true,
 
   // ============================================================================
   // LANGUAGE-SPECIFIC FORMATTING

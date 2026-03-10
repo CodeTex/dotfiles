@@ -5,7 +5,9 @@ set fish_greeting
 
 # Envars
 set -gx CHEZMOI_HOME $HOME/.local/share/chezmoi
-set -gx HOSTNAME $(hostname)
+if not set -q HOSTNAME
+	set -gx HOSTNAME (cat /etc/hostname)
+end
 
 # Abbreviations
 abbr sf source $FISH_CONFIG_HOME/config.fish
@@ -64,8 +66,6 @@ mise activate fish | source
 starship init fish | source
 
 zoxide init fish | source
-
-try init ~/Work/tries | source
 
 fzf_key_bindings
 
