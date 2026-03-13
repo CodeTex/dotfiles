@@ -5,12 +5,16 @@
   "share": "disabled",
   "permission": {
     "*": "ask",
-    "read": "allow",
-    "glob": "allow",
-    "grep": "allow",
-    "list": "allow",
     "edit": "allow",
-    "webfetch": "allow",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "list": "allow",
+    "lsp": "ask",
+    "skill": "ask",
+    "todo*": "allow",
+    "web*": "allow",
+    "question": "allow",
     "bash": {
       "*": "ask",
 

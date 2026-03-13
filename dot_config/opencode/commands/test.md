@@ -1,7 +1,7 @@
 ---
 description: Run pytest using project configuration (pyproject.toml or pytest.ini) and package from local .venv. Abort if no .venv, not a Python project, or pytest unavailable. OS-agnostic (Linux, macOS, Windows).
 agent: plan
-model: github-copilot/gpt-4.1
+model: github-copilot/gpt-5.3-codex
 ---
 
 # Test Command - Python Project Only

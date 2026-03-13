@@ -1,7 +1,7 @@
 ---
 description: Analyzes, discusses, and documents architectural decisions—focusing on simplicity, trade-offs, and context-aware recommendations
 mode: subagent
-model: github-copilot/gpt-5.2
+model: github-copilot/gpt-5.3-codex
 temperature: 0.4
 tools:
   write: true

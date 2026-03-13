@@ -84,6 +84,11 @@ Set-Alias -Name which -Value Get-CommandDefinition                     # Show co
 Set-Alias -Name uva -Value Add-UvScriptDependency                      # Add dependency to script
 Set-Alias -Name uvr -Value Invoke-UvScript                             # Run Python script with uv
 
+# The activation function has been moved to functions/virtualenv.ps1 so it
+# loads with the rest of the functions directory. Keep a short alias here
+# for interactive ergonomics.
+Set-Alias -Name va -Value Activate-VirtualEnvironment -Option AllScope
+
 # ============================================
 # UTILITIES
 # ============================================

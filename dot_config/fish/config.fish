@@ -60,6 +60,23 @@ alias ...="cd ../.."
 
 alias decompress="tar -xzf"
 
+# Virtualenv activation helper
+# Usage: `va` to source ./.venv/bin/activate or `va path/to/activate` for a custom path
+function va --description "Activate project's virtualenv from ./.venv/bin/activate"
+    set -l activate_path
+    if test (count $argv) -gt 0
+        set activate_path $argv[1]
+    else
+        set activate_path ./.venv/bin/activate
+    end
+
+    if test -f $activate_path
+        source $activate_path
+    else
+        echo "No virtualenv activation script found at '$activate_path'"
+    end
+end
+
 # Initializations
 mise activate fish | source
 

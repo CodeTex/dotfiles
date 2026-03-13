@@ -1,7 +1,7 @@
 ---
 description: Explains programming language concepts, syntax, and patterns through concise comparisons and examples
 mode: subagent
-model: github-copilot/gpt-4.1
+model: github-copilot/gpt-5.4
 temperature: 0.4
 tools:
   write: false

@@ -1,7 +1,7 @@
 ---
 description: Analyzes code and designs well-structured tests focusing on behavior verification, not implementation details
 mode: subagent
-model: github-copilot/gpt-5.1-codex-mini
+model: github-copilot/gpt-5.3-codex
 temperature: 0.3
 tools:
   write: true
