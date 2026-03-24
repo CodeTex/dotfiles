@@ -88,6 +88,7 @@ config.window_frame = {
 }
 
 local leader_is_active = false
+local ctrl_alt_is_active = false
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local edge_background = color_crust
@@ -108,11 +109,11 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	local tab_right = wezterm.nerdfonts.ple_lower_left_triangle
 
 	if tab.tab_index == 0 then
-		tab_left = leader_is_active and wezterm.nerdfonts.ple_upper_right_triangle or ""
+		tab_left = (leader_is_active or ctrl_alt_is_active) and wezterm.nerdfonts.ple_upper_right_triangle or ""
 	end
 
 	-- Calculate space needed for the left and right triangles and padding
-	local left_space = tab.tab_index == 0 and (leader_is_active and 1 or 0) or 1
+	local left_space = tab.tab_index == 0 and ((leader_is_active or ctrl_alt_is_active) and 1 or 0) or 1
 	local right_space = 1
 	local padding_space = 2
 
@@ -217,22 +218,24 @@ config.harfbuzz_features = {
 }
 
 -- Keybindings
+local mod = "CTRL|ALT"
+
 config.leader = { key = "f", mods = "ALT", timeout_milliseconds = 2000 }
 config.keys = {
 	{ mods = "LEADER", key = "c", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
 	{ mods = "LEADER", key = "x", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
-	{ mods = "LEADER", key = "b", action = wezterm.action.ActivateTabRelative(-1) },
-	{ mods = "LEADER", key = "n", action = wezterm.action.ActivateTabRelative(1) },
+	{ mods = mod, key = "b", action = wezterm.action.ActivateTabRelative(-1) },
+	{ mods = mod, key = "n", action = wezterm.action.ActivateTabRelative(1) },
 	{ mods = "LEADER", key = "i", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "e", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ mods = "LEADER", key = "j", action = wezterm.action.ActivatePaneDirection("Left") },
-	{ mods = "LEADER", key = "k", action = wezterm.action.ActivatePaneDirection("Down") },
-	{ mods = "LEADER", key = "l", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ mods = "LEADER", key = ";", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ mods = "LEADER", key = "LeftArrow", action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
-	{ mods = "LEADER", key = "DownArrow", action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
-	{ mods = "LEADER", key = "UpArrow", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
-	{ mods = "LEADER", key = "RightArrow", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
+	{ mods = mod, key = "j", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ mods = mod, key = "k", action = wezterm.action.ActivatePaneDirection("Down") },
+	{ mods = mod, key = "l", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ mods = mod, key = ";", action = wezterm.action.ActivatePaneDirection("Right") },
+	{ mods = mod, key = "LeftArrow", action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
+	{ mods = mod, key = "DownArrow", action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
+	{ mods = mod, key = "UpArrow", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
+	{ mods = mod, key = "RightArrow", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
 }
 
 -- leader + 0-9 to switch tabs
@@ -250,9 +253,16 @@ wezterm.on("update-right-status", function(window, _)
 	local prefix = ""
 	local ARROW_FOREGROUND = { Foreground = { Color = color_mantle } }
 
+	local mods, _ = window:keyboard_modifiers()
+	ctrl_alt_is_active = mods:find("CTRL") and mods:find("ALT")
+
 	leader_is_active = window:leader_is_active()
+
 	if leader_is_active then
 		prefix = " " .. wezterm.nerdfonts.md_space_invaders .. " " -- activation icon
+		DIVIDER = wezterm.nerdfonts.ple_lower_left_triangle
+	elseif ctrl_alt_is_active then
+		prefix = " " .. wezterm.nerdfonts.md_lightning_bolt .. " " -- mods active icon
 		DIVIDER = wezterm.nerdfonts.ple_lower_left_triangle
 	end
 
