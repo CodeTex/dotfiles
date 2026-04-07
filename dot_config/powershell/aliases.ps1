@@ -35,6 +35,9 @@ Set-Alias -Name lgit -Value lazygit                                    # Launch 
 # ============================================
 # CHEZMOI DOTFILE MANAGEMENT
 # ============================================
+# Unified command wrapper
+Set-Alias -Name cm -Value Invoke-ChezmoiCommand                         # cm <subcommand>
+
 # Status and inspection
 Set-Alias -Name cgs -Value Show-ChezmoiStatus                          # Git status in chezmoi source
 Set-Alias -Name cpd -Value Show-ChezmoiChanges                         # Pull and show diff
@@ -46,6 +49,7 @@ Set-Alias -Name cvim -Value Edit-ChezmoiFile                           # Edit fi
 # Sync operations
 Set-Alias -Name cpa -Value Sync-ChezmoiFromRemote                      # Pull from remote and apply
 Set-Alias -Name cpush -Value Publish-ChezmoiChanges                    # Commit and push changes
+Set-Alias -Name cchk -Value Check-ChezmoiRemoteLocal                   # Preview remote vs local and possible conflicts
 
 # ============================================
 # CONFIGURATION EDITING
