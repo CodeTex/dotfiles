@@ -259,10 +259,10 @@ wezterm.on("update-right-status", function(window, _)
 	leader_is_active = window:leader_is_active()
 
 	if leader_is_active then
-		prefix = " " .. wezterm.nerdfonts.md_space_invaders .. " " -- activation icon
+		prefix = " " .. wezterm.nerdfonts.md_lightning_bolt .. " " -- bolt icon
 		DIVIDER = wezterm.nerdfonts.ple_lower_left_triangle
 	elseif ctrl_alt_is_active then
-		prefix = " " .. wezterm.nerdfonts.md_lightning_bolt .. " " -- mods active icon
+		prefix = " " .. wezterm.nerdfonts.md_space_invaders .. " " -- invader icon
 		DIVIDER = wezterm.nerdfonts.ple_lower_left_triangle
 	end
 
