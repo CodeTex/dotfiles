@@ -111,3 +111,102 @@ function Copy-ItemToClipboard {
         Write-Host "✓ $($items.Count) item(s) copied to clipboard (ready to paste)" -ForegroundColor Green
     }
 }
+
+function Remove-Pycache {
+    <#
+    .SYNOPSIS
+        Remove all __pycache__ directories
+    .DESCRIPTION
+        Recursively finds and removes all __pycache__ directories under the specified path
+    .PARAMETER Path
+        Root path to search (default: current directory)
+    .EXAMPLE
+        Remove-Pycache
+    .EXAMPLE
+        Remove-Pycache -Path C:\projects\myproj
+    .EXAMPLE
+        Remove-Pycache -Path . -WhatIf
+    #>
+    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Medium')]
+    param(
+        [Parameter(Position=0)]
+        [string]$Path = '.'
+    )
+
+    Get-ChildItem -Path $Path -Directory -Force -Recurse -ErrorAction SilentlyContinue |
+        Where-Object { $_.Name -eq '__pycache__' } |
+        ForEach-Object {
+            $target = $_.FullName
+            if ($PSCmdlet.ShouldProcess($target, 'Remove directory')) {
+                Remove-Item -LiteralPath $target -Recurse -Force -ErrorAction SilentlyContinue
+                Write-Output $target
+            }
+        }
+}
+
+function Remove-PycFiles {
+    <#
+    .SYNOPSIS
+        Remove all .pyc files
+    .DESCRIPTION
+        Recursively finds and removes all .pyc compiled Python files under the specified path
+    .PARAMETER Path
+        Root path to search (default: current directory)
+    .EXAMPLE
+        Remove-PycFiles
+    .EXAMPLE
+        Remove-PycFiles -Path C:\projects\myproj
+    .EXAMPLE
+        Remove-PycFiles -Path . -WhatIf
+    #>
+    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Low')]
+    param(
+        [Parameter(Position=0)]
+        [string]$Path = '.'
+    )
+
+    Get-ChildItem -Path $Path -File -Filter '*.pyc' -Force -Recurse -ErrorAction SilentlyContinue |
+        ForEach-Object {
+            $target = $_.FullName
+            if ($PSCmdlet.ShouldProcess($target, 'Remove file')) {
+                Remove-Item -LiteralPath $target -Force -ErrorAction SilentlyContinue
+                Write-Output $target
+            }
+        }
+}
+
+function Remove-PyArtifacts {
+    <#
+    .SYNOPSIS
+        Remove all Python artifacts (__pycache__ directories and .pyc files)
+    .DESCRIPTION
+        Recursively removes all __pycache__ directories and .pyc files under the specified path
+    .PARAMETER Path
+        Root path to search (default: current directory)
+    .PARAMETER SkipPycache
+        Skip removal of __pycache__ directories
+    .PARAMETER SkipPycFiles
+        Skip removal of .pyc files
+    .EXAMPLE
+        Remove-PyArtifacts
+    .EXAMPLE
+        Remove-PyArtifacts -Path C:\projects\myproj
+    .EXAMPLE
+        Remove-PyArtifacts -Path . -WhatIf
+    #>
+    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Medium')]
+    param(
+        [Parameter(Position=0)]
+        [string]$Path = '.',
+        [switch]$SkipPycache,
+        [switch]$SkipPycFiles
+    )
+
+    if (-not $SkipPycache) {
+        Remove-Pycache -Path $Path -Confirm:$false
+    }
+
+    if (-not $SkipPycFiles) {
+        Remove-PycFiles -Path $Path -Confirm:$false
+    }
+}

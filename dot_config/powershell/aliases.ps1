@@ -83,7 +83,7 @@ Set-Alias -Name df -Value Get-Volume                                   # Disk sp
 Set-Alias -Name which -Value Get-CommandDefinition                     # Show command location
 
 # ============================================
-# PYTHON/UV PACKAGE MANAGER
+# PYTHON/UV PACKAGE MANAGER & CLEANUP
 # ============================================
 Set-Alias -Name uva -Value Add-UvScriptDependency                      # Add dependency to script
 Set-Alias -Name uvr -Value Invoke-UvScript                             # Run Python script with uv
@@ -92,6 +92,11 @@ Set-Alias -Name uvr -Value Invoke-UvScript                             # Run Pyt
 # loads with the rest of the functions directory. Keep a short alias here
 # for interactive ergonomics.
 Set-Alias -Name va -Value Activate-VirtualEnvironment -Option AllScope
+
+# Python artifact cleanup
+Set-Alias -Name rmpy -Value Remove-PyArtifacts                         # Remove __pycache__ & .pyc files
+Set-Alias -Name rmpyc -Value Remove-Pycache                            # Remove __pycache__ only
+Set-Alias -Name rmpycf -Value Remove-PycFiles                          # Remove .pyc files only
 
 # ============================================
 # UTILITIES

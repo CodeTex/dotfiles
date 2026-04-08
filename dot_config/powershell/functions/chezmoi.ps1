@@ -158,20 +158,22 @@ function Check-ChezmoiRemoteLocal {
         }
 
         Write-Host "`n=== Commits on remote not local (HEAD..$Upstream) ===" -ForegroundColor Cyan
-        git --no-pager log --oneline HEAD..$Upstream
+        # Quote commit ranges to avoid PowerShell interpreting ".." as the range operator
+        git --no-pager log --oneline "HEAD..$Upstream"
 
         Write-Host "`n=== Commits local not on remote ($Upstream..HEAD) ===" -ForegroundColor Cyan
-        git --no-pager log --oneline $Upstream..HEAD
+        git --no-pager log --oneline "$Upstream..HEAD"
 
         Write-Host "`n=== Files modified locally (since merge-base) ===" -ForegroundColor Cyan
-        git --no-pager diff --name-status $base..HEAD
+        git --no-pager diff --name-status "$base..HEAD"
 
         Write-Host "`n=== Files modified on remote (since merge-base) ===" -ForegroundColor Cyan
-        git --no-pager diff --name-status $base..$Upstream
+        git --no-pager diff --name-status "$base..$Upstream"
 
         Write-Host "`n=== Potential conflict candidates (changed on both) ===" -ForegroundColor Cyan
-        $local = git diff --name-only $base..HEAD
-        $remote = git diff --name-only $base..$Upstream
+        # Quote ranges to prevent PowerShell from parsing ".." as its range operator
+        $local = git diff --name-only "$base..HEAD"
+        $remote = git diff --name-only "$base..$Upstream"
         if ($local -and $remote) {
             $conflicts = @()
             foreach ($f in $local) { if ($remote -contains $f) { $conflicts += $f } }
