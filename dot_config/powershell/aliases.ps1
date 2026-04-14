@@ -135,3 +135,5 @@ if (Test-Path "$env:ProgramFiles\Notepad++\notepad++.exe") {
 if (Test-Path "$env:ProgramData\mingw64\mingw64\bin\mingw32-make.exe") {
     Set-Alias -Name make -Value "$env:ProgramData\mingw64\mingw64\bin\mingw32-make.exe"
 }
+
+ 
