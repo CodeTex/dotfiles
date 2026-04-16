@@ -29,6 +29,9 @@ Set-Alias -Name gt -Value Show-GitTree -Force -Option AllScope         # git log
 Set-Alias -Name gbclean -Value Clear-GitBranches                       # Clean branches without remotes
 Set-Alias -Name gbprune -Value Remove-PrunedBranches                   # Remove branches with gone remotes
 
+# Git helper dispatcher
+Set-Alias -Name gg -Value Invoke-GitHelper -Force -Option AllScope     # Git utilities: clean, prune, age, help
+
 # Git integrations
 Set-Alias -Name lgit -Value lazygit                                    # Launch lazygit TUI
 

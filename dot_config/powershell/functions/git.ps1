@@ -216,3 +216,185 @@ function Get-GitHubContent {
         }
     }
 }
+
+
+function Get-GitRepoAge {
+    <#
+    .SYNOPSIS
+        List files and directories in a git repository older than a threshold.
+    .DESCRIPTION
+        Scans a repository directory and returns items older than the specified
+        number of days. By default it checks top-level entries. Use -Recursive
+        to search subdirectories. The -Depth parameter limits recursion levels
+        (0 means unlimited).
+    .PARAMETER RepoPath
+        Path to the repository (defaults to current directory).
+    .PARAMETER Days
+        Age threshold in days (defaults to 360).
+    .PARAMETER Recursive
+        If specified, search recursively.
+    .PARAMETER Depth
+        Maximum recursion depth when -Recursive is used. 0 = unlimited.
+    .EXAMPLE
+        Get-GitRepoAge -RepoPath "C:\path\to\repo"
+    .EXAMPLE
+        Get-GitRepoAge -RepoPath "C:\path\to\repo" -Days 90 -Recursive -Depth 2
+    .EXAMPLE
+        # Current directory, recursive, 60 days old, exportable to CSV
+        Get-GitRepoAge -Days 60 -Recursive -PassThru | Export-Csv results.csv -NoTypeInformation
+    #>
+    [CmdletBinding()]
+    param(
+        [string]$RepoPath = ".",
+        [Alias('DaysThreshold')]
+        [int]$Days = 360,
+        [switch]$Recursive,
+        [int]$Depth = 0,
+        [switch]$PassThru
+    )
+
+    try {
+        $repoRoot = (Resolve-Path -LiteralPath $RepoPath -ErrorAction Stop).Path
+    }
+    catch {
+        Write-Error "Invalid path: $RepoPath"
+        return
+    }
+
+    $isGitRepo = git -C "$repoRoot" rev-parse --is-inside-work-tree 2>$null
+    if ($LASTEXITCODE -ne 0 -or $isGitRepo -ne 'true') {
+        Write-Error "Path is not a git repository: $repoRoot"
+        return
+    }
+
+    $thresholdDate = (Get-Date).AddDays(-$Days)
+
+    if ($Recursive) {
+        if ($Depth -gt 0) {
+            $items = Get-ChildItem -LiteralPath $repoRoot -Force -Recurse -Depth $Depth -ErrorAction SilentlyContinue
+        }
+        else {
+            $items = Get-ChildItem -LiteralPath $repoRoot -Force -Recurse -ErrorAction SilentlyContinue
+        }
+    }
+    else {
+        $items = Get-ChildItem -LiteralPath $repoRoot -Force -ErrorAction SilentlyContinue
+    }
+
+    $now = Get-Date
+    $results = foreach ($item in $items) {
+        if ($item.Name -eq '.git') { continue }
+        if ($item.FullName -like "$repoRoot\.git*") { continue }
+
+        $relativePath = [System.IO.Path]::GetRelativePath($repoRoot, $item.FullName)
+        $relativePath = $relativePath -replace '\\', '/'
+        if ([string]::IsNullOrWhiteSpace($relativePath) -or $relativePath -eq '.') { continue }
+
+        $gitLog = git -C "$repoRoot" log -1 --format=%aI%n%an -- "$relativePath" 2>$null
+        if (-not $gitLog -or $gitLog.Count -lt 2) { continue }
+
+        try {
+            $commitDate = [DateTime]::Parse($gitLog[0])
+        }
+        catch {
+            continue
+        }
+
+        if ($commitDate -ge $thresholdDate) { continue }
+
+        [PSCustomObject]@{
+            Name           = if ($Recursive) { $relativePath } else { $item.Name }
+            Type           = if ($item.PSIsContainer) { 'Directory' } else { 'File' }
+            LastCommitDate = $commitDate
+            Author         = $gitLog[1]
+            DaysOld        = [math]::Round((($now) - $commitDate).TotalDays)
+        }
+    }
+
+    if (-not $results -or $results.Count -eq 0) {
+        Write-Host "No items older than $Days days in $repoRoot" -ForegroundColor Yellow
+        if (-not $Recursive) {
+            Write-Host "Tip: use -Recursive to scan subdirectories" -ForegroundColor DarkGray
+        }
+        return
+    }
+
+    $results = $results | Sort-Object LastCommitDate
+
+    if ($PassThru) {
+        $results
+        return
+    }
+
+    $results | Format-Table Name, Type, LastCommitDate, Author, DaysOld -AutoSize
+}
+
+function Invoke-GitHelper {
+    <#
+    .SYNOPSIS
+        Unified dispatcher for git helper utilities
+    .DESCRIPTION
+        Groups git maintenance and inspection commands: clean, prune, age
+    .PARAMETER Command
+        Subcommand to execute: clean, prune, age, help
+    .EXAMPLE
+        gg clean
+    .EXAMPLE
+        gg prune
+    .EXAMPLE
+        gg age -Recursive -DaysThreshold 60
+    .EXAMPLE
+        gg help
+    #>
+    [CmdletBinding()]
+    param(
+        [Parameter(Position = 0, Mandatory = $true)]
+        [ValidateSet('clean', 'prune', 'age', 'help')]
+        [string]$Command,
+
+        [switch]$Force,
+        [Parameter(Position = 1)]
+        [string]$RepoPath,
+        [Alias('DaysThreshold')]
+        [int]$Days = 360,
+        [switch]$Recursive,
+        [int]$Depth = 0,
+        [switch]$PassThru
+    )
+
+    switch ($Command) {
+        'clean' {
+            Clear-GitBranches -Force:$Force
+        }
+        'prune' {
+            Remove-PrunedBranches
+        }
+        'age' {
+            $params = @{}
+            if ($PSBoundParameters.ContainsKey('RepoPath')) { $params['RepoPath'] = $RepoPath }
+            if ($PSBoundParameters.ContainsKey('Days')) { $params['Days'] = $Days }
+            elseif ($PSBoundParameters.ContainsKey('DaysThreshold')) { $params['Days'] = $Days }
+            if ($PSBoundParameters.ContainsKey('Recursive')) { $params['Recursive'] = $Recursive }
+            if ($PSBoundParameters.ContainsKey('Depth')) { $params['Depth'] = $Depth }
+            if ($PSBoundParameters.ContainsKey('PassThru')) { $params['PassThru'] = $PassThru }
+
+            Get-GitRepoAge @params
+        }
+        'help' {
+            Write-Host "Git utilities dispatcher" -ForegroundColor Cyan
+            Write-Host "Usage: gg <command> [args]" -ForegroundColor White
+            Write-Host ""
+            Write-Host "Commands:" -ForegroundColor Cyan
+            Write-Host "  clean                  Clean up local branches without valid remote tracking"
+            Write-Host "  prune                  Remove local branches with gone remote tracking"
+            Write-Host "  age [options]          List files/directories older than threshold"
+            Write-Host "  help                   Show this help message"
+            Write-Host ""
+            Write-Host "Examples:" -ForegroundColor Cyan
+            Write-Host "  gg clean -Force"
+            Write-Host "  gg prune"
+            Write-Host "  gg age -Recursive -Days 60"
+            Write-Host "  gg age -RepoPath . -Days 90 -PassThru | Export-Csv results.csv"
+        }
+    }
+}
