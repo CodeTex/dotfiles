@@ -5,9 +5,9 @@ backups/** # ignore the contents of backups folder but not the folder itself
 
 .config/powershell/*.json
 
-{{- if eq .chezmoi.os "linux" }}
-.config/powershell/*
-{{- end }}
+# {{- if eq .chezmoi.os "linux" }}
+# .config/powershell/*
+# {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
 .bashrc
