@@ -4,6 +4,7 @@
 # Allow tracked top-level directories
 !fish/
 !fish/**
+fish/project-registry.json
 
 !fonts/
 !fonts/**

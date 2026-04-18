@@ -1,5 +1,5 @@
 function oc --description "Open or manage saved project paths"
-    set -l registry "$HOME/.config/powershell/project-registry.json"
+    set -l registry "$HOME/.config/fish/project-registry.json"
     set -l registry_dir (dirname "$registry")
     set -l tmp "$registry.tmp"
 
