@@ -197,7 +197,7 @@ function Show-ChezmoiCommandHelp {
     Write-Host "Commands:"
     Write-Host "  gs, status              Show chezmoi source git status"
     Write-Host "  diff                    Pull remote and show chezmoi diff"
-    Write-Host "  re-add [path ...]       Re-add files into chezmoi source"
+    Write-Host "  re-add, ra [path ...]   Re-add files into chezmoi source"
     Write-Host "  edit <path ...>         Edit a chezmoi-managed file and apply"
     Write-Host "  pull                    Pull chezmoi source and apply"
     Write-Host "  push [message]          Re-add, commit, and push"
