@@ -5,28 +5,29 @@
   "share": "disabled",
   "permission": {
     "*": "ask",
-    "edit": "allow",
-    "read": "allow",
     "grep": "allow",
     "glob": "allow",
-    "list": "allow",
+    "edit": "allow",
     "lsp": "ask",
-    "skill": "ask",
+    "skill": "allow",
     "todo*": "allow",
     "web*": "allow",
+    "task": "allow",
     "question": "allow",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
     "bash": {
       "*": "ask",
 
-      // --- Allow: read-only commands ---
+      // --- Allow: file and search inspection ---
       "ls *": "allow",
-      "cat *": "allow",
       "dir *": "allow",
       "eza *": "allow",
-	  "find*": "allow",
       "fd *": "allow",
-      "head *": "allow",
-      "tail *": "allow",
       "rg *": "allow",
 
       // --- Allow: git read-only ---
@@ -36,19 +37,29 @@
       "git branch*": "allow",
       "git show*": "allow",
 
-      // --- Allow: testing & linting ---
+      // --- Allow: Python quality checks ---
+      "uv run pytest*": "allow",
+      "uv run ruff*": "allow",
+      "uv run ty*": "allow",
+      "uvx *": "allow",
+      ".venv\\Scripts\\python*": "allow",
+      ".venv\\Scripts\\prek*": "allow",
+      ".venv/bin/python*": "allow",
+      ".venv/bin/prek*": "allow",
       "*python -m pytest*": "allow",
       "pytest*": "allow",
       "*python -m ruff*": "allow",
       "ruff*": "allow",
       "*python -m ty*": "allow",
+      "prek *": "allow",
       "ty*": "allow",
+
+      // --- Allow: secondary language checks ---
       "cargo check*": "allow",
       "cargo test*": "allow",
       "go test*": "allow",
 
       // --- Allow: package inspection ---
-      "pip list*": "allow",
       "uv pip list*": "allow",
       "cargo tree*": "allow",
       "go list*": "allow",
@@ -62,7 +73,7 @@
 
       // --- Deny: package modifications ---
       "pip *": "deny",
-      "uv *": "deny",
+      "uv *": "ask",
       "cargo add*": "deny",
       "cargo install*": "deny",
       "cargo remove*": "deny",
@@ -73,6 +84,45 @@
       "chezmoi *": "deny",
       "mise *": "deny",
       "scoop *": "deny"
+    }
+  },
+  "agent": {
+    "build": {
+      "permission": {
+        "task": {
+          "*": "deny",
+          "general": "allow",
+          "explore": "allow",
+          "architect": "allow",
+          "code-reviewer": "allow",
+          "cve-scanner": "allow",
+          "debugger": "allow",
+          "polyglot": "allow",
+          "python-documenter": "allow",
+          "python-engineer": "allow",
+          "python-reliability-reviewer": "allow",
+          "python-test-engineer": "allow",
+          "repo-map": "allow",
+          "researcher": "allow"
+        }
+      }
+    },
+    "plan": {
+      "permission": {
+        "edit": "deny",
+        "task": {
+          "*": "deny",
+          "explore": "allow",
+          "general": "allow",
+          "architect": "allow",
+          "code-reviewer": "allow",
+          "cve-scanner": "allow",
+          "polyglot": "allow",
+          "python-reliability-reviewer": "allow",
+          "repo-map": "allow",
+          "researcher": "allow"
+        }
+      }
     }
   }
 }
