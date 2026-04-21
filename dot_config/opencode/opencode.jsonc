@@ -3,17 +3,25 @@
   "model": "github-copilot/gpt-5-mini",
   "autoupdate": true,
   "share": "disabled",
+  "instructions": ["./plugins/shell-strategy/shell_strategy.md"],
+  "plugin": ["file://./plugins/opencode-vibeguard/src/index.js"],
   "permission": {
     "*": "ask",
     "grep": "allow",
     "glob": "allow",
-    "edit": "allow",
+    "edit": {
+      "*": "allow",
+      "~/.config/opencode/**": "ask"
+    },
     "lsp": "ask",
     "skill": "allow",
     "todo*": "allow",
     "web*": "allow",
     "task": "allow",
     "question": "allow",
+    "external_directory": {
+      "~/.config/opencode/**": "allow"
+    },
     "read": {
       "*": "allow",
       "*.env": "deny",
@@ -95,6 +103,7 @@
           "explore": "allow",
           "architect": "allow",
           "code-reviewer": "allow",
+          "context-scout": "allow",
           "cve-scanner": "allow",
           "debugger": "allow",
           "polyglot": "allow",
@@ -116,6 +125,7 @@
           "general": "allow",
           "architect": "allow",
           "code-reviewer": "allow",
+          "context-scout": "allow",
           "cve-scanner": "allow",
           "polyglot": "allow",
           "python-reliability-reviewer": "allow",
