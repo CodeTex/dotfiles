@@ -222,8 +222,8 @@ local mod = "CTRL|ALT"
 
 config.leader = { key = "f", mods = "ALT", timeout_milliseconds = 2000 }
 config.keys = {
-	{ mods = "LEADER", key = "c", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-	{ mods = "LEADER", key = "x", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+	{ mods = mod, key = "c", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{ mods = mod, key = "x", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 	{ mods = mod, key = "b", action = wezterm.action.ActivateTabRelative(-1) },
 	{ mods = mod, key = "n", action = wezterm.action.ActivateTabRelative(1) },
 	{ mods = mod, key = "i", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
