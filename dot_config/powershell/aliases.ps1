@@ -42,17 +42,17 @@ Set-Alias -Name lgit -Value lazygit                                    # Launch 
 Set-Alias -Name cm -Value Invoke-ChezmoiCommand                         # cm <subcommand>
 
 # Status and inspection
-# Set-Alias -Name cgs -Value Show-ChezmoiStatus                          # Git status in chezmoi source
-# Set-Alias -Name cpd -Value Show-ChezmoiChanges                         # Pull and show diff
+Set-Alias -Name cgs -Value Show-ChezmoiStatus                          # Git status in chezmoi source
+Set-Alias -Name cpd -Value Show-ChezmoiChanges                         # Pull and show diff
 
 # File operations
-# Set-Alias -Name cra -Value Update-ChezmoiFiles                         # Re-add modified files
-# Set-Alias -Name cvim -Value Edit-ChezmoiFile                           # Edit file and apply
+Set-Alias -Name cra -Value Update-ChezmoiFiles                         # Re-add modified files
+Set-Alias -Name cvim -Value Edit-ChezmoiFile                           # Edit file and apply
 
 # Sync operations
-# Set-Alias -Name cpa -Value Sync-ChezmoiFromRemote                      # Pull from remote and apply
-# Set-Alias -Name cpush -Value Publish-ChezmoiChanges                    # Commit and push changes
-# Set-Alias -Name cchk -Value Check-ChezmoiRemoteLocal                   # Preview remote vs local and possible conflicts
+Set-Alias -Name cpa -Value Sync-ChezmoiFromRemote                      # Pull from remote and apply
+Set-Alias -Name cpush -Value Publish-ChezmoiChanges                    # Commit and push changes
+Set-Alias -Name cchk -Value Check-ChezmoiRemoteLocal                   # Preview remote vs local and possible conflicts
 
 # ============================================
 # CONFIGURATION EDITING

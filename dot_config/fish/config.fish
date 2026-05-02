@@ -31,8 +31,10 @@ abbr cgs 'cd (chezmoi source-path) && git status && cd -'
 abbr cra 'chezmoi re-add'
 abbr cpl 'cd (chezmoi source-path) && git pull && cd - && chezmoi apply'
 abbr cdi 'cd (chezmoi source-path) && git pull && cd - && chezmoi diff'
-abbr cpush 'chezmoi re-add && cd (chezmoi source-path) && git add . && git commit -m "feat: update dotfiles" && git push && cd -'
+abbr cpush 'chezmoi re-add && cd (chezmoi source-path) && git commit -A -m "feat: update dotfiles" && git push && cd -'
 abbr cls 'chezmoi list'
+
+abbr svenv 'source ./.venv/bin/activate.fish'
 
 # Aliases
 alias ls="eza --long --header --group-directories-first --icons=auto"

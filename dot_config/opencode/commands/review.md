@@ -1,13 +1,18 @@
 ---
-description: Review current changes, a file, or a focused code area for bugs and unnecessary complexity
-agent: code-reviewer
-subtask: true
+description: Actionable code review for a file, snippet, or focus area (optionally accepts a focus, e.g., `/review security`).
 ---
 
-Review the target below.
+# Code Review Command
 
-- If `$ARGUMENTS` is empty, review the current working tree and staged changes.
-- If `$ARGUMENTS` names files, symbols, or pasted code, focus there.
-- Prioritize correctness, edge cases, maintainability, and over-engineering.
+- Pass the code, filename, or paste a snippet as the main argument.
+- Optionally add a focus topic (e.g. `/review security`, `/review performance`).
+- The reviewer will:
+  1. Prioritize bugs/correctness issues (quickly highlight high-severity problems)
+  2. Highlight unclear/misleading code (readability/logic)
+  3. Flag missed edge cases (robustness)
+  4. Call out unnecessary complexity (simplification)
+  5. Address focus area, if provided (e.g., security or performance)
+- Skip praise and minor nitpicks unless they directly hurt readability or correctness.
+- If file/code is good, just say so concisely!
 
 $ARGUMENTS

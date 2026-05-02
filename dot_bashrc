@@ -23,3 +23,5 @@ alias cm-push='chezmoi git push'
 # Initializations
 . "$HOME/.cargo/env"
 
+
+. "$HOME/.local/share/../bin/env"

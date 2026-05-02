@@ -1,1 +1,25 @@
-scan_timeout = 5000
+add_newline = false
+scan_timeout = 0
+
+# Explicitly set format to only show what you want
+format = """
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$character"""
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+
+[cmd_duration]
+min_time = 100
+show_milliseconds = true
+format = "[$duration](bright-black)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+read_only = " 🔒"
