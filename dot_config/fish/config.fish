@@ -27,12 +27,7 @@ abbr gs "git status"
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
 abbr cm "chezmoi"
-abbr cgs 'cd (chezmoi source-path) && git status && cd -'
-abbr cra 'chezmoi re-add'
-abbr cpl 'cd (chezmoi source-path) && git pull && cd - && chezmoi apply'
-abbr cdi 'cd (chezmoi source-path) && git pull && cd - && chezmoi diff'
-abbr cpush 'chezmoi re-add && cd (chezmoi source-path) && git commit -a -m "feat: update dotfiles" && git push && cd -'
-abbr cls 'chezmoi list'
+abbr cmp "chezmoi_push"
 
 abbr svenv 'source ./.venv/bin/activate.fish'
 
