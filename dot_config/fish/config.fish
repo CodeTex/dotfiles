@@ -42,6 +42,7 @@ alias la="ls --all"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="lt --all"
 alias lo="eza --header --group-directories-first --oneline"
+alias occ="opencode"
 
 alias cd="z"
 

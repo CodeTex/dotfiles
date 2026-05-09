@@ -40,8 +40,6 @@ function Set-ParentLocation {
 # DIRECTORY LISTING FUNCTIONS (EZA)
 # ============================================
 
-$script:ezaBaseOptions = '--color=always --color-scale=all --color-scale-mode=gradient --icons=always --group-directories-first'
-
 function Show-Directory {
     <#
     .SYNOPSIS
@@ -51,7 +49,7 @@ function Show-Directory {
     .EXAMPLE
         Show-Directory
     #>
-    eza $script:ezaBaseOptions.Split() @args
+    eza --group-directories-first --long --header --icons=auto @args
 }
 
 function Show-DirectoryLong {
@@ -63,7 +61,7 @@ function Show-DirectoryLong {
     .EXAMPLE
         Show-DirectoryLong
     #>
-    eza $script:ezaBaseOptions.Split() --long --git --header @args
+    eza --group-directories-first --long --header --icons=auto @args
 }
 
 function Show-DirectoryAll {
@@ -75,7 +73,7 @@ function Show-DirectoryAll {
     .EXAMPLE
         Show-DirectoryAll
     #>
-    eza $script:ezaBaseOptions.Split() --all @args
+    eza --group-directories-first --long --header --icons=auto --all @args
 }
 
 function Show-DirectoryAllLong {
@@ -87,7 +85,7 @@ function Show-DirectoryAllLong {
     .EXAMPLE
         Show-DirectoryAllLong
     #>
-    eza $script:ezaBaseOptions.Split() --all --long --git --header @args
+    eza --group-directories-first --long --header --icons=auto --all @args
 }
 
 function Show-DirectoryTree {
@@ -101,5 +99,29 @@ function Show-DirectoryTree {
     .EXAMPLE
         Show-DirectoryTree --level=3
     #>
-    eza $script:ezaBaseOptions.Split() --tree --level=2 --long --header @args
+    eza --group-directories-first --tree --level=2 --long --icons --git @args
+}
+
+function Show-DirectoryTreeAll {
+    <#
+    .SYNOPSIS
+        Display all directory contents as a tree structure
+    .DESCRIPTION
+        Shows directory hierarchy in tree format with 2 levels of depth, including hidden files
+    .EXAMPLE
+        Show-DirectoryTreeAll
+    #>
+    eza --group-directories-first --tree --level=2 --long --icons --git --all @args
+}
+
+function Show-DirectoryOneLine {
+    <#
+    .SYNOPSIS
+        Display directory contents in a compact one-line format
+    .DESCRIPTION
+        Shows one entry per line with a header while grouping directories first
+    .EXAMPLE
+        Show-DirectoryOneLine
+    #>
+    eza --group-directories-first --header --oneline @args
 }

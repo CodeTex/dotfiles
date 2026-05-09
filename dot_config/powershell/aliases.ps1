@@ -16,6 +16,8 @@ Set-Alias -Name la -Value Show-DirectoryAll
 Set-Alias -Name lla -Value Show-DirectoryAllLong
 Set-Alias -Name ls -Value Show-Directory -Option AllScope
 Set-Alias -Name lt -Value Show-DirectoryTree -Option AllScope
+Set-Alias -Name lta -Value Show-DirectoryTreeAll -Option AllScope
+Set-Alias -Name lo -Value Show-DirectoryOneLine -Option AllScope
 
 # ============================================
 # GIT OPERATIONS
