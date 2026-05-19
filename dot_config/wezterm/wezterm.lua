@@ -81,7 +81,7 @@ config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
 config.use_fancy_tab_bar = false
 
-config.tab_max_width = 30
+config.tab_max_width = 70
 
 config.window_frame = {
     font_size = font_size + 2
