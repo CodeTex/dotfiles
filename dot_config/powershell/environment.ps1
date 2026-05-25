@@ -4,6 +4,11 @@
 
 # General
 $ENV:EDITOR = "vim"
+# Use a portable UTF-8 locale for Git/Perl on Windows.
+# Culture-based values like en-US.UTF-8 may not be recognized, causing locale warnings.
+# C.UTF-8 avoids those warnings while keeping UTF-8 behavior.
+$ENV:LANG = "C.UTF-8"
+$ENV:LC_ALL = "C.UTF-8"
 
 # PowerShell
 $ENV:PWSH_HOME = "$HOME\.config\powershell"
@@ -37,9 +42,6 @@ $ENV:FZF_DEFAULT_OPTS = @'
 # uv
 $UV_CACHE_DIR = "$HOME\AppData\Local\uv\cache"
 $UV_CACHE_ENV_DIR = "$UV_CACHE_DIR\environments-v2"
-
-# Locale (for LazyVim)
-$ENV:LANG = "$((Get-Culture).Name).UTF-8"
 
 # Custom update notification (choose one option above)
 # $ENV:POWERSHELL_UPDATECHECK = 'Off'
