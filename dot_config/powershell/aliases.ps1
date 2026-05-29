@@ -95,6 +95,7 @@ Set-Alias -Name rmpycf -Value Remove-PycFiles                          # Remove 
 # ============================================
 # Project management
 Set-Alias -Name oc -Value Open-Project                                 # Open registered project
+Set-Alias -Name gli -Value Invoke-GlabAlias -Force -Option AllScope    # glab wrapper with aliases
 
 # Note taking
 Set-Alias -Name note -Value New-Note                                   # Create/edit note with nvim
