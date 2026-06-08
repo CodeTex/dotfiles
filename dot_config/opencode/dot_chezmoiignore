@@ -1,6 +1,0 @@
-node_modules/
-node_modules/**
-bun.lock
-*.bak
-package.json
-tui.json
