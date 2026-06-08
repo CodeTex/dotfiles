@@ -106,6 +106,10 @@ Set-Alias -Name ghdl -Value Get-GitHubContent                          # Downloa
 # System info
 Set-Alias -Name ff -Value fastfetch                                    # Display system information
 
+# Copy Zed configuration into .config
+function Copy-ZedConfig { $src='C:\Users\z003z8wr\AppData\Roaming\Zed'; $dst=Join-Path $HOME '.config\zed'; New-Item -ItemType Directory -Force -Path $dst | Out-Null; 'settings.json','keymap.json','AGENTS.md' | ForEach-Object { $f=Join-Path $src $_; if (Test-Path $f) { Copy-Item $f -Destination $dst -Force } } }
+Set-Alias -Name czed -Value Copy-ZedConfig
+
 # ============================================
 # SCOOP PACKAGE MANAGER
 # ============================================

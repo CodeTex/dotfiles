@@ -11,8 +11,8 @@
   },
   "agent_servers": {
     "opencode": {
-      "type": "registry",
-    },
+      "type": "registry"
+    }
   },
   "edit_predictions": {
     "mode": "subtle",
@@ -64,7 +64,7 @@
     "enabled": false,
   },
   "extend_comment_on_newline": true,
-  "format_on_save": "on",
+  "format_on_save": "off",
   "gutter": {
     "line_numbers": true,
     "min_line_number_digits": 0,
@@ -76,7 +76,7 @@
   "show_completions_on_input": true,
   "show_completion_documentation": true,
   "vertical_scroll_margin": 1,
-  "vim_mode": true,
+  "vim_mode": false,
 
   // General
   "auto_update": false,
@@ -168,8 +168,8 @@
     "git_gutter": "tracked_files",
     "inline_blame": {
       "delay_ms": 500,
-      "enabled": true
-    }
+      "enabled": true,
+    },
   },
 
   // Window & Layout
