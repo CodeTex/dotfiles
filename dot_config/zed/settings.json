@@ -73,6 +73,7 @@
   "hover_popover_enabled": true,
   "inline_code_actions": false,
   "multi_cursor_modifier": "cmd_or_ctrl",
+  "relative_line_numbers": "enabled",
   "show_completions_on_input": true,
   "show_completion_documentation": true,
   "vertical_scroll_margin": 1,
