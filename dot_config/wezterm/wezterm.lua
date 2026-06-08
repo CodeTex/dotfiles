@@ -32,13 +32,14 @@ config.enable_wayland = false
 
 if os_name == "Windows" then
     -- config.default_prog = { "C:\\Windows\\System32\\wsl.exe", "--distribution", "archlinux" }
-    config.default_prog = { 
-	"C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-	"-NoLogo",
-	"-WorkingDirectory",
-	get_home()
+    config.default_prog = {
+        -- "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+        get_home() .. "\\scoop\\apps\\pwsh\\current\\pwsh.exe",
+        "-NoLogo",
+        "-WorkingDirectory",
+        get_home()
     }
-    -- config.default_cwd = get_home() 
+    -- config.default_cwd = get_home()
 elseif os_name == "Linux" then
     -- config.default_cwd = get_home()
 end
@@ -47,10 +48,10 @@ end
 config.initial_rows = 50
 config.initial_cols = 160
 config.window_padding = {
-	left = 8,
-	right = 2,
-	top = 8,
-	bottom = 8,
+    left = 8,
+    right = 2,
+    top = 8,
+    bottom = 8,
 }
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
@@ -91,57 +92,57 @@ local leader_is_active = false
 local ctrl_alt_is_active = false
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local edge_background = color_crust
-	local background = color_surface_0
-	local foreground = color_lavender
+    local edge_background = color_crust
+    local background = color_surface_0
+    local foreground = color_lavender
 
-	if tab.is_active then
-		background = color_lavender
-		foreground = color_surface_0
-	elseif hover then
-		background = color_surface_1
-		foreground = color_lavender
-	end
+    if tab.is_active then
+        background = color_lavender
+        foreground = color_surface_0
+    elseif hover then
+        background = color_surface_1
+        foreground = color_lavender
+    end
 
-	local edge_foreground = background
+    local edge_foreground = background
 
-	local tab_left = wezterm.nerdfonts.ple_upper_right_triangle
-	local tab_right = wezterm.nerdfonts.ple_lower_left_triangle
+    local tab_left = wezterm.nerdfonts.ple_upper_right_triangle
+    local tab_right = wezterm.nerdfonts.ple_lower_left_triangle
 
-	if tab.tab_index == 0 then
-		tab_left = (leader_is_active or ctrl_alt_is_active) and wezterm.nerdfonts.ple_upper_right_triangle or ""
-	end
+    if tab.tab_index == 0 then
+        tab_left = (leader_is_active or ctrl_alt_is_active) and wezterm.nerdfonts.ple_upper_right_triangle or ""
+    end
 
-	-- Calculate space needed for the left and right triangles and padding
-	local left_space = tab.tab_index == 0 and ((leader_is_active or ctrl_alt_is_active) and 1 or 0) or 1
-	local right_space = 1
-	local padding_space = 2
+    -- Calculate space needed for the left and right triangles and padding
+    local left_space = tab.tab_index == 0 and ((leader_is_active or ctrl_alt_is_active) and 1 or 0) or 1
+    local right_space = 1
+    local padding_space = 2
 
-	-- Ensure that the titles fit in the available space
-	local title = tab.active_pane.title
-	local available_width = max_width - (left_space + right_space + padding_space)
-	-- title = wezterm.truncate_right(title, available_width)
-	title = process_title(title, available_width)
+    -- Ensure that the titles fit in the available space
+    local title = tab.active_pane.title
+    local available_width = max_width - (left_space + right_space + padding_space)
+    -- title = wezterm.truncate_right(title, available_width)
+    title = process_title(title, available_width)
 
-	local cells = {}
+    local cells = {}
 
-	-- Add left triangle if needed
+    -- Add left triangle if needed
     if tab_left ~= "" then
         table.insert(cells, { Background = { Color = edge_background } })
         table.insert(cells, { Foreground = { Color = edge_foreground } })
         table.insert(cells, { Text = tab_left })
     end
-    
+
     -- Add title with background and foreground
     table.insert(cells, { Background = { Color = background } })
     table.insert(cells, { Foreground = { Color = foreground } })
     table.insert(cells, { Text = " " .. title .. " " })
-    
+
     -- Add right triangle
     table.insert(cells, { Background = { Color = edge_background } })
     table.insert(cells, { Foreground = { Color = edge_foreground } })
     table.insert(cells, { Text = tab_right })
-    
+
     return cells
 end)
 
@@ -152,69 +153,69 @@ function process_title(title, max_width)
     if string.find(title, "/", 1, true) then
         path_separator = "/"
     end
-    
+
     -- Pattern to match the last part of the path
     local last_part_pattern = "([^" .. path_separator .. "]+)$"
     -- Pattern to match the parent directory
     local parent_dir_pattern = "([^" .. path_separator .. "]+)" .. path_separator .. "[^" .. path_separator .. "]+$"
-    
+
     -- Check if the title contains a path separator
     if string.find(title, path_separator, 1, true) then
         -- Extract the last part of the path (filename or directory)
         local last_part = string.match(title, last_part_pattern) or title
-        
+
         -- If we couldn't extract a last part, use the whole title
         if not last_part or last_part == "" then
             last_part = title
         end
-        
+
         -- Extract the parent directory name
         local parent_dir = string.match(title, parent_dir_pattern) or ""
-        
+
         -- If the last part fits within the max width
         if #last_part <= max_width then
             -- If there's room for parent_dir + separator + last_part
             if #parent_dir > 0 and #parent_dir + 1 + #last_part <= max_width then
                 return parent_dir .. path_separator .. last_part
             end
-            
+
             -- If there's not enough room for the parent dir, just show the last part
             return last_part
         else
             -- If even the last part doesn't fit, truncate it from the left
-            return "..." .. string.sub(last_part, -(max_width-3))
+            return "..." .. string.sub(last_part, -(max_width - 3))
         end
     end
-    
+
     -- For non-path titles, just truncate from the right if needed
     return wezterm.truncate_right(title, max_width)
 end
 
 -- Font
 config.font = wezterm.font_with_fallback({
-	-- { family = 'FiraMono Nerd Font' },
-	{
-		family = "FiraCode Nerd Font",
-		weight = "Regular",
-		harfbuzz_features = {
-			-- https://github.com/tonsky/FiraCode/wiki/How-to-enable-stylistic-sets
-			"cv04", -- styles: i
-			"cv08", -- styles: l
-			"cv14", -- styles: r
-			"ss04", -- styles: $
-		},
-	},
-	{ family = "NotoSans Nerd Font" },
-	{ family = "JetBrains Nerd Font" },
+    -- { family = 'FiraMono Nerd Font' },
+    {
+        family = "FiraCode Nerd Font",
+        weight = "Regular",
+        harfbuzz_features = {
+            -- https://github.com/tonsky/FiraCode/wiki/How-to-enable-stylistic-sets
+            "cv04", -- styles: i
+            "cv08", -- styles: l
+            "cv14", -- styles: r
+            "ss04", -- styles: $
+        },
+    },
+    { family = "NotoSans Nerd Font" },
+    { family = "JetBrains Nerd Font" },
 })
 config.font_size = font_size
 
 config.warn_about_missing_glyphs = true
 
 config.harfbuzz_features = {
-	"kern", -- default kerning
-	"liga", -- default ligatures
-	"clig", -- default contextual ligatures
+    "kern", -- default kerning
+    "liga", -- default ligatures
+    "clig", -- default contextual ligatures
 }
 
 -- Keybindings
@@ -222,59 +223,76 @@ local mod = "CTRL|ALT"
 
 config.leader = { key = "f", mods = "ALT", timeout_milliseconds = 2000 }
 config.keys = {
-	{ mods = mod, key = "c", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-	{ mods = mod, key = "x", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
-	{ mods = mod, key = "b", action = wezterm.action.ActivateTabRelative(-1) },
-	{ mods = mod, key = "n", action = wezterm.action.ActivateTabRelative(1) },
-	{ mods = mod, key = "i", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ mods = mod, key = "e", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ mods = mod, key = "j", action = wezterm.action.ActivatePaneDirection("Left") },
-	{ mods = mod, key = "k", action = wezterm.action.ActivatePaneDirection("Down") },
-	{ mods = mod, key = "l", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ mods = mod, key = ";", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ mods = mod, key = "LeftArrow", action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
-	{ mods = mod, key = "DownArrow", action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
-	{ mods = mod, key = "UpArrow", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
-	{ mods = mod, key = "RightArrow", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
+    { mods = mod, key = "c",          action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+    { mods = mod, key = "x",          action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+    { mods = mod, key = "b",          action = wezterm.action.ActivateTabRelative(-1) },
+    { mods = mod, key = "n",          action = wezterm.action.ActivateTabRelative(1) },
+    { mods = mod, key = "i",          action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { mods = mod, key = "e",          action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { mods = mod, key = "j",          action = wezterm.action.ActivatePaneDirection("Left") },
+    { mods = mod, key = "k",          action = wezterm.action.ActivatePaneDirection("Down") },
+    { mods = mod, key = "l",          action = wezterm.action.ActivatePaneDirection("Up") },
+    { mods = mod, key = ";",          action = wezterm.action.ActivatePaneDirection("Right") },
+    { mods = mod, key = "LeftArrow",  action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
+    { mods = mod, key = "DownArrow",  action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
+    { mods = mod, key = "UpArrow",    action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
+    { mods = mod, key = "RightArrow", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
 }
 
 -- leader + 0-9 to switch tabs
 for i = 1, 9 do
-	table.insert(config.keys, {
-		mods = "LEADER",
-		key = tostring(i),
-		action = wezterm.action.ActivateTab(i - 1), -- indexed tabs start from 0
-	})
+    table.insert(config.keys, {
+        mods = "LEADER",
+        key = tostring(i),
+        action = wezterm.action.ActivateTab(i - 1), -- indexed tabs start from 0
+    })
+end
+
+if os_name == "Windows" then
+    table.insert(config.keys, {
+        mods = "CTRL|ALT|SHIFT",
+        key = "C",
+        action = wezterm.action.SpawnCommandInNewTab({
+            args = {
+                "C:\\Windows\\System32\\wsl.exe",
+                "--distribution",
+                "archlinux",
+                "--exec",
+                "fish",
+                "-l",
+            },
+        }),
+    })
 end
 
 -- tmux status
 wezterm.on("update-right-status", function(window, _)
-	local DIVIDER = ""
-	local prefix = ""
-	local ARROW_FOREGROUND = { Foreground = { Color = color_mantle } }
+    local DIVIDER = ""
+    local prefix = ""
+    local ARROW_FOREGROUND = { Foreground = { Color = color_mantle } }
 
-	local mods, _ = window:keyboard_modifiers()
-	ctrl_alt_is_active = mods:find("CTRL") and mods:find("ALT")
+    local mods, _ = window:keyboard_modifiers()
+    ctrl_alt_is_active = mods:find("CTRL") and mods:find("ALT")
 
-	leader_is_active = window:leader_is_active()
+    leader_is_active = window:leader_is_active()
 
-	if leader_is_active then
-		prefix = " " .. wezterm.nerdfonts.md_lightning_bolt .. " " -- bolt icon
-		DIVIDER = wezterm.nerdfonts.ple_lower_left_triangle
-	elseif ctrl_alt_is_active then
-		prefix = " " .. wezterm.nerdfonts.md_space_invaders .. " " -- invader icon
-		DIVIDER = wezterm.nerdfonts.ple_lower_left_triangle
-	end
+    if leader_is_active then
+        prefix = " " .. wezterm.nerdfonts.md_lightning_bolt .. " " -- bolt icon
+        DIVIDER = wezterm.nerdfonts.ple_lower_left_triangle
+    elseif ctrl_alt_is_active then
+        prefix = " " .. wezterm.nerdfonts.md_space_invaders .. " " -- invader icon
+        DIVIDER = wezterm.nerdfonts.ple_lower_left_triangle
+    end
 
-	window:set_left_status(wezterm.format({
-		{ Background = { Color = color_mauve } },
-		{ Foreground = { Color = color_crust } },
-		{ Text = prefix },
-		ARROW_FOREGROUND,
-		{ Background = { Color = color_mantle } },
-		{ Foreground = { Color = color_mauve } },
-		{ Text = DIVIDER },
-	}))
+    window:set_left_status(wezterm.format({
+        { Background = { Color = color_mauve } },
+        { Foreground = { Color = color_crust } },
+        { Text = prefix },
+        ARROW_FOREGROUND,
+        { Background = { Color = color_mantle } },
+        { Foreground = { Color = color_mauve } },
+        { Text = DIVIDER },
+    }))
 end)
 
 return config

@@ -1,3 +1,30 @@
 [tools]
-hadolint = "latest"
-gitleaks = "latest"
+bat = "latest"
+chezmoi = "latest"
+eza = "latest"
+fastfetch = "latest"
+fd = "latest"
+fzf = "latest"
+jq = "latest"
+just = "latest"
+lazygit = "latest"
+ripgrep = "latest"
+starship = "latest"
+usage = { version = "latest", os = ["linux"] }
+yazi = "latest"
+zoxide = "latest"
+
+# Only for private
+
+# Only for work
+# azure-cli = { version = "latest", os = ["windows"] }
+cowsay = { version = "latest", os = ["windows"] }
+dive = { version = "latest", os = ["windows"] }
+# dvc = { version = "latest", os = ["windows"] }
+git-lfs = { version = "latest", os = ["windows"] }
+gitleaks = { version = "latest", os = ["windows"] }
+glab = { version = "latest", os = ["windows"] }
+grype = { version = "latest", os = ["windows"] }
+hadolint = { version = "latest", os = ["windows"] }
+lazydocker = { version = "latest", os = ["windows"] }
+node = "latest"

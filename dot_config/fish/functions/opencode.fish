@@ -1,9 +1,9 @@
-function opencode --description "OpenCode project registry wrapper"
+function opencode_registry --description "OpenCode project registry wrapper"
     set -l registry "$HOME/.config/fish/project-registry.json"
     set -l registry_dir (dirname "$registry")
     set -l tmp "$registry.tmp"
 
-    function __opencode_init_registry --no-scope-shadowing
+    function __opencode_registry_init --no-scope-shadowing
         if not test -d "$registry_dir"
             mkdir -p "$registry_dir"
         end
@@ -13,7 +13,7 @@ function opencode --description "OpenCode project registry wrapper"
         end
     end
 
-    function __opencode_require_jq
+    function __opencode_registry_require_jq
         if not type -q jq
             echo "occ: jq is required for registry operations"
             return 1
@@ -21,11 +21,11 @@ function opencode --description "OpenCode project registry wrapper"
         return 0
     end
 
-    function __opencode_update_recent --no-scope-shadowing
+    function __opencode_registry_update_recent --no-scope-shadowing
         set -l entry_name "$argv[1]"
         set -l entry_path "$argv[2]"
 
-        if not __opencode_require_jq
+        if not __opencode_registry_require_jq
             return 1
         end
 
@@ -39,7 +39,7 @@ function opencode --description "OpenCode project registry wrapper"
         and mv "$tmp" "$registry"
     end
 
-    __opencode_init_registry
+    __opencode_registry_init
 
     if test (count $argv) -eq 0
         if command -q opencode
@@ -60,7 +60,7 @@ function opencode --description "OpenCode project registry wrapper"
                 return 1
             end
 
-            if not __opencode_require_jq
+            if not __opencode_registry_require_jq
                 return 1
             end
 
@@ -93,7 +93,7 @@ function opencode --description "OpenCode project registry wrapper"
                 return 1
             end
 
-            if not __opencode_require_jq
+            if not __opencode_registry_require_jq
                 return 1
             end
 
@@ -110,7 +110,7 @@ function opencode --description "OpenCode project registry wrapper"
             return $status
 
         case list ls
-            if not __opencode_require_jq
+            if not __opencode_registry_require_jq
                 return 1
             end
 
@@ -130,7 +130,7 @@ function opencode --description "OpenCode project registry wrapper"
             return 0
 
         case recent
-            if not __opencode_require_jq
+            if not __opencode_registry_require_jq
                 return 1
             end
 
@@ -169,7 +169,7 @@ function opencode --description "OpenCode project registry wrapper"
             return 0
     end
 
-    if not __opencode_require_jq
+    if not __opencode_registry_require_jq
         return 1
     end
 
@@ -197,7 +197,7 @@ function opencode --description "OpenCode project registry wrapper"
         return 1
     end
 
-    __opencode_update_recent "$recent_name" "$target_path"
+    __opencode_registry_update_recent "$recent_name" "$target_path"
 
     cd "$target_path"
     if command -q opencode

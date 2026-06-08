@@ -15,31 +15,22 @@ abbr vf $EDITOR $FISH_CONFIG_HOME/config.fish
 
 abbr fl "fc-list : family | awk -F ',' '{print \$1}' | sort | uniq"
 
-abbr dps docker ps -a
-abbr dls docker image ls -a
-abbr dcup docker compose up -d
-abbr dcdn docker compose down
-abbr dclogs docker compose logs -f
-abbr dcls docker compose ps
-
-abbr gs "git status"
-
 abbr ff "fzf --preview 'bat --style=numbers --color=always {}'"
 
-abbr cm "chezmoi"
-abbr cmp "chezmoi_push"
+abbr cm chezmoi
+abbr cmp chezmoi_push
 
-abbr svenv 'source ./.venv/bin/activate.fish'
+abbr svenv "source ./.venv/bin/activate.fish"
 
 # Aliases
-alias ls="eza --long --header --group-directories-first --icons=auto"
-alias la="ls --all"
-alias lt="eza --tree --level=2 --long --icons --git"
-alias lta="lt --all"
-alias lo="eza --header --group-directories-first --oneline"
-alias occ="opencode"
-
-alias cd="z"
+alias ls "eza --long --header --group-directories-first --icons=auto"
+alias la "ls --all"
+alias lt "eza --tree --level=2 --long --icons --git"
+alias lta "lt --all"
+alias lo "eza --header --group-directories-first --oneline"
+alias decompress "tar -xzf"
+alias occ opencode_registry
+alias cd z
 
 function zd --description "Change directory using zoxide"
     if test (count $argv) -eq 0
@@ -54,10 +45,6 @@ function zd --description "Change directory using zoxide"
     end
 end
 
-alias ..="cd .."
-alias ...="cd ../.."
-
-alias decompress="tar -xzf"
 
 # Virtualenv activation helper
 # Usage: `va` to source ./.venv/bin/activate or `va path/to/activate` for a custom path
@@ -83,7 +70,9 @@ starship init fish | source
 
 zoxide init fish | source
 
-fzf_key_bindings
+if type -q fzf_key_bindings
+    fzf_key_bindings
+end
 
 # Functions
 function compress --description "Compress a directory into a .tar.gz file"

@@ -1,25 +1,76 @@
 {
+  "cli_default_open_behavior": "new_window",
+  "debugger": {
+    "timeout": 10000,
+  },
+  "agent_servers": {
+    "opencode": {
+      "type": "registry",
+    },
+  },
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  // "collaboration_panel": {
+  //   "dock": null,
+  //   "button": false,
+  // },
+  "git_panel": {
+    "dock": "left",
+  },
+  "gutter": {
+    "line_numbers": true,
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    // "inline_assistant_model": {
+    //   "provider": "copilot_chat",
+    //   "model": "gpt-5.3-codex",
+    //   "enable_thinking": false,
+    // },
+    "model_parameters": [],
+    "commit_message_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5-mini",
+    },
+  },
   "auto_update": false,
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
   },
   "icon_theme": {
-    "mode": "system",
-    "light": "Zed (Default)",
+    "mode": "dark",
+    "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha",
   },
   "theme": {
     "mode": "dark",
-    "light": "Rosé Pine Dawn",
+    "light": "Nord Light",
     "dark": "Catppuccin Macchiato",
   },
   "buffer_font_family": "Monaspace Neon",
   "buffer_font_size": 10,
+  // "buffer_font_weight": 500,
   "ui_font_family": "Roboto",
-  "ui_font_size": 12,
+  "ui_font_size": 13,
   "vim_mode": false,
   "languages": {
+    "Dockerfile": {
+      "language_servers": [
+        "docker-language-server",
+        "dockerfile-language-server",
+      ],
+      "wrap_guides": [100],
+    },
+    "Markdown": {
+      "format_on_save": "on",
+      "wrap_guides": [200],
+    },
     "Python": {
       "language_servers": ["ty", "ruff", "!basedpyright"],
       "format_on_save": "on",
@@ -27,23 +78,41 @@
         "source.organizeImports.ruff": true,
         "source.fixAll.ruff": true,
       },
+      "wrap_guides": [90],
+    },
+    "TOML": {
+      "wrap_guides": [80],
+    },
+    "YAML": {
+      "language_servers": ["yaml-language-server"],
+      "wrap_guides": [100],
+    },
+  },
+  "lsp": {
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "schemas": {
+            "https://raw.githubusercontent.com/Nuitka/Nuitka/c4b663ccd79f6a89463fdb9a7a3ff1599ef05803/nuitka/package_config/nuitka-package-config-schema.json": "*.nuitka-package.config.yml",
+          },
+        },
+      },
     },
   },
   "terminal": {
     "font_family": "JetBrainsMono Nerd Font Mono",
-    "font_size": 10,
   },
-  "agent_servers": {
-    "OpenCode": {
-      "type": "custom",
-      "command": "opencode",
-      "args": ["acp"],
-    },
-  },
-  "agent_buffer_font_size": 10,
-  "agent_ui_font_size": 12,
+  // "agent_servers": {
+  //   "OpenCode": {
+  //     "type": "custom",
+  //     "command": "opencode",
+  //     "args": ["acp"],
+  //   },
+  // },
+  // "agent_buffer_font_size": 10,
+  // "agent_ui_font_size": 12,
   "disable_ai": false,
   "edit_predictions": {
-    "provider": "copilot",
+    "provider": "zed",
   },
 }
