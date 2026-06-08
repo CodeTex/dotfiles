@@ -81,3 +81,73 @@ function Test-PowerShellUpdate {
         Write-Host "󰁔 󰚰 $($_)" -ForegroundColor Yellow
     }
 }
+
+function Measure-ProfileLoad
+{
+    [CmdletBinding()]
+    param(
+        [string]$ProfileRoot = "$HOME\.config\powershell",
+        [switch]$IncludeFunctionFiles
+    )
+
+    $results = [System.Collections.Generic.List[object]]::new()
+
+    function Add-ProfileTiming
+    {
+        param(
+            [string]$Name,
+            [scriptblock]$Script
+        )
+
+        $sw = [System.Diagnostics.Stopwatch]::StartNew()
+        & $Script
+        $sw.Stop()
+
+        $results.Add([pscustomobject]@{
+            Name = $Name
+            Milliseconds = $sw.ElapsedMilliseconds
+        })
+    }
+
+    $environmentPath = Join-Path $ProfileRoot 'environment.ps1'
+    $aliasesPath     = Join-Path $ProfileRoot 'aliases.ps1'
+    $promptPath      = Join-Path $ProfileRoot 'prompt.ps1'
+    $functionsPath   = Join-Path $ProfileRoot 'functions'
+
+    if (Test-Path -LiteralPath $environmentPath)
+    {
+        Add-ProfileTiming -Name 'environment.ps1' -Script { . $environmentPath }
+    }
+
+    if (Test-Path -LiteralPath $functionsPath)
+    {
+        if ($IncludeFunctionFiles)
+        {
+            Get-ChildItem -LiteralPath $functionsPath -Filter '*.ps1' | Sort-Object Name | ForEach-Object {
+                $file = $_
+                Add-ProfileTiming -Name "functions/$($file.Name)" -Script { . $file.FullName }
+            }
+        } else
+        {
+            Add-ProfileTiming -Name 'functions (all)' -Script {
+                Get-ChildItem -LiteralPath $functionsPath -Filter '*.ps1' | ForEach-Object {
+                    . $_.FullName
+                }
+            }
+        }
+    }
+
+    if (Test-Path -LiteralPath $aliasesPath)
+    {
+        Add-ProfileTiming -Name 'aliases.ps1' -Script { . $aliasesPath }
+    }
+
+    if (Test-Path -LiteralPath $promptPath)
+    {
+        Add-ProfileTiming -Name 'prompt.ps1' -Script { . $promptPath }
+    }
+
+    $results |
+        Sort-Object Milliseconds -Descending |
+        Format-Table -AutoSize
+}

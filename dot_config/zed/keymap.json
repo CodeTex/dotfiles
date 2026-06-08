@@ -7,6 +7,18 @@
 // from the command palette.
 [
   {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
     "bindings": {
       "ctrl-alt-o": [
         "agent::NewExternalAgentThread",
@@ -22,18 +34,6 @@
           },
         },
       ],
-    },
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-    },
-  },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // "j k": "vim::NormalBefore"
     },
   },
 ]

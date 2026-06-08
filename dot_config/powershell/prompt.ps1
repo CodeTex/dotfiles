@@ -18,7 +18,7 @@ function Initialize-ShellTool
 
     if (Get-Command $Name -ErrorAction SilentlyContinue)
     {
-        Invoke-Expression (& { (& $Name $InitArgs.Split() | Out-String) })
+        Invoke-Expression (& $Name $InitArgs.Split() | Out-String)
     } else
     {
         Write-Warning "$Name not found. Install with: mise use -g $Name"
