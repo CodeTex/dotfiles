@@ -2,7 +2,7 @@
   // AI
   "agent": {
     "commit_message_model": {
-      "model": "qwen3.5:9b",
+      "model": "qwen3.5:4b",
       "provider": "ollama",
     },
     "dock": "right",
@@ -11,6 +11,10 @@
   },
   "agent_servers": {
     "opencode": {
+      "default_config_options": {
+        "mode": "plan",
+        "model": "ollama/qwen3.6:35b"
+      },
       "type": "registry"
     }
   },
@@ -56,14 +60,14 @@
   "auto_indent_on_paste": false,
   "autosave": {
     "after_delay": {
-      "milliseconds": 2500,
+      "milliseconds": 5000,
     },
   },
   "cursor_shape": "hollow",
   "drag_and_drop_selection": {
     "enabled": false,
   },
-  "extend_comment_on_newline": true,
+  "extend_comment_on_newline": false,
   "format_on_save": "off",
   "gutter": {
     "line_numbers": true,

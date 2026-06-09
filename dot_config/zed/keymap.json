@@ -1,18 +1,28 @@
 [
   {
+    "context": "Editor",
+    "bindings": {
+      "cmd-[": "editor::Fold",
+      "cmd-]": "editor::UnfoldLines",
+      "cmd-alt-[": "editor::FoldAll",
+      "cmd-alt-]": "editor::UnfoldAll",
+      "tab": "editor::AcceptEditPrediction",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-s": "zed::OpenSettingsFile",
+      "alt-k": "zed::OpenKeymapFile",
+    },
+  },
+    {
     "context": "vim_mode == normal || vim_mode == visual",
     "bindings": {
       "j": "vim::Left",
       "k": "vim::Down",
       "l": "vim::Up",
       ";": "vim::Right",
-    },
-  },
-  {
-    "context": "!Editor",
-    "bindings": {
-      "l": "menu::SelectPrevious",
-      "k": "menu::SelectNext",
     },
   },
   {
@@ -33,24 +43,6 @@
       "space o": "outline::Toggle",
       "space w": "pane::CloseActiveItem",
       "space q a": "pane::CloseAllItems",
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "cmd-j": "editor::DuplicateLineDown",
-      "cmd-[": "editor::Fold",
-      "cmd-]": "editor::UnfoldLines",
-      "cmd-alt-[": "editor::FoldAll",
-      "cmd-alt-]": "editor::UnfoldAll",
-    },
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      "alt-s": "zed::OpenSettingsFile",
-      "alt-k": "zed::OpenKeymapFile",
-      "cmd-\\": "workspace::ActivatePreviousPane",
     },
   },
 ]

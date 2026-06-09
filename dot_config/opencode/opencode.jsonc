@@ -1,0 +1,55 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "permission": {
+    "bash": {
+      "*": "allow",
+      // Python
+      "pip *": "deny",
+      "python -m *": "ask",
+      "uv *": "ask",
+      "uv run": "allow",
+      // General
+      "cp *": "allow",
+      "rm *": "ask",
+      "mv *": "allow",
+      // Git
+      "git add*": "deny",
+      "git commit*": "deny",
+      "git m*": "ask",
+      "git p*": "deny",
+      "git r*": "ask",
+      "git remote*": "allow",
+      "git t*": "deny",
+    },
+    "external_directory": "ask",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow",
+      "*.env.template": "allow"
+    }
+  },
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "llama3.2:3b": {"name": "Llama 3.2 3b"},
+        "gemma4:26b": {"name": "Gemma 4 26b"},
+        "deepseek-coder-v2:16b": {"name": "DeepSeek Coder v2 16b"},
+        "qwen2.5-coder:7b": {"name": "Qwen 2.5 Coder 7b"},
+        "qwen3.6:27b": {"name": "Qwen 3.6 27b"},
+        "qwen3.6:35b": {"name": "Qwen 3.6 35b"},
+      }
+    }
+  },
+  "server": {
+    "port": 4096
+  },
+  "share": "disabled",
+}
