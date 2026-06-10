@@ -1,6 +1,18 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": false,
+  "default_agent": "plan",
+  "model": "github-copilot/gpt-5-mini",
+  // "small_model": "ollama/llama3.2:3b",
+  "share": "disabled",
+  "server": {
+    "port": 4096,
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 12000,
+  },
   "permission": {
     "bash": {
       "*": "allow",
@@ -18,9 +30,9 @@
       "git commit*": "deny",
       "git m*": "ask",
       "git p*": "deny",
-      "git r*": "ask",
-      "git remote*": "allow",
-      "git t*": "deny",
+      "git rebase*": "ask",
+      "git reset*": "deny",
+      "git t*": "ask",
     },
     "external_directory": "ask",
     "read": {
@@ -28,28 +40,41 @@
       "*.env": "deny",
       "*.env.*": "deny",
       "*.env.example": "allow",
-      "*.env.template": "allow"
-    }
+      "*.env.template": "allow",
+    },
   },
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama",
       "options": {
-        "baseURL": "http://localhost:11434/v1"
+        "baseURL": "http://localhost:11434/v1",
       },
       "models": {
-        "llama3.2:3b": {"name": "Llama 3.2 3b"},
-        "gemma4:26b": {"name": "Gemma 4 26b"},
-        "deepseek-coder-v2:16b": {"name": "DeepSeek Coder v2 16b"},
-        "qwen2.5-coder:7b": {"name": "Qwen 2.5 Coder 7b"},
-        "qwen3.6:27b": {"name": "Qwen 3.6 27b"},
-        "qwen3.6:35b": {"name": "Qwen 3.6 35b"},
-      }
-    }
+        "llama3.2:3b": { "name": "Llama 3.2 3b" },
+        "gemma4:26b": { "name": "Gemma 4 26b" },
+        "deepseek-coder-v2:16b": { "name": "DeepSeek Coder v2 16b" },
+        "qwen2.5-coder:7b": { "name": "Qwen 2.5 Coder 7b" },
+        "qwen3.6:27b": { "name": "Qwen 3.6 27b" },
+        "qwen3.6:35b": { "name": "Qwen 3.6 35b" },
+      },
+    },
   },
-  "server": {
-    "port": 4096
+  "experimental": {
+    "policies": [
+      { "effect": "allow", "action": "provider.use", "resource": "copilot" },
+      { "effect": "allow", "action": "provider.use", "resource": "ollama" },
+    ],
   },
-  "share": "disabled",
+  "agent": {
+    "build": {
+      "model": "github-copilot/gpt-5.4-mini",
+      // "model": "ollama/qwen3.6:27b",
+      "prompt": "{file:./prompts/build.md}",
+    },
+    "plan": {
+      "model": "github-copilot/gpt-5-mini",
+      "prompt": "{file:./prompts/plan.md}",
+    },
+  },
 }
