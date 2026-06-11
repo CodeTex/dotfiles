@@ -1,6 +1,6 @@
 add_newline = false
-scan_timeout = 30
 command_timeout = 1000
+scan_timeout = 30
 
 format = """
 $directory\
@@ -9,6 +9,9 @@ $git_status\
 $cmd_duration\
 $line_break\
 $character"""
+
+[line_break]
+disabled = false
 
 [character]
 success_symbol = "[❯](green)"

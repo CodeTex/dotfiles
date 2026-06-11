@@ -5,11 +5,11 @@
 $script:ConfigRoot = Split-Path -Parent $PSCommandPath
 . "$ConfigRoot\functions\prompt-helpers.ps1"
 
-Invoke-CachedShellTool `
-    -ToolName "mise" `
-    -Arguments @("activate", "pwsh") `
-    -CachePath "$HOME\.cache\powershell\mise-activate-pwsh.ps1" `
-    -InstallHint "Install with: scoop install mise"
+# Invoke-CachedShellTool `
+#     -ToolName "mise" `
+#     -Arguments @("activate", "pwsh") `
+#     -CachePath "$HOME\.cache\powershell\mise-activate-pwsh.ps1" `
+#     -InstallHint "Install with: scoop install mise"
 
 # (&mise activate pwsh) | Out-String | Invoke-Expression
 
