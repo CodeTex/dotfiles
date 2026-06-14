@@ -1,26 +1,7 @@
-# [tools]
-# bat = "latest"
-# chezmoi = "latest"
-# eza = "latest"
-# fastfetch = "latest"
-# fd = "latest"
-# fzf = "latest"
-# jq = "latest"
-# lazygit = "latest"
-# ripgrep = "latest"
-# starship = "latest"
-# usage = { version = "latest", os = ["linux"] }
-# yazi = "latest"
-# zoxide = "latest"
+[settings]
+minimum_release_age = "7d"
+npm.package_manager = "bun"
 
-# Only for work
-# azure-cli = { version = "latest", os = ["windows"] }
-# dive = { version = "latest", os = ["windows"] }
-# # dvc = { version = "latest", os = ["windows"] }
-# git-lfs = { version = "latest", os = ["windows"] }
-# gitleaks = { version = "latest", os = ["windows"] }
-# glab = { version = "latest", os = ["windows"] }
-# grype = { version = "latest", os = ["windows"] }
-# hadolint = { version = "latest", os = ["windows"] }
-# just = { version = "latest", os = ["windows"] }
-# lazydocker = { version = "latest", os = ["windows"] }
+[tools]
+bun = "latest"
+node = "latest"

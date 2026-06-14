@@ -1,5 +1,12 @@
 [
   {
+    "context": "Workspace",
+    "bindings": {
+      "alt-s": "zed::OpenSettingsFile",
+      "alt-k": "zed::OpenKeymapFile",
+    },
+  },
+  {
     "context": "Editor",
     "bindings": {
       "cmd-[": "editor::Fold",
@@ -10,39 +17,16 @@
     },
   },
   {
-    "context": "Workspace",
-    "bindings": {
-      "alt-s": "zed::OpenSettingsFile",
-      "alt-k": "zed::OpenKeymapFile",
-    },
-  },
-    {
-    "context": "vim_mode == normal || vim_mode == visual",
-    "bindings": {
-      "j": "vim::Left",
-      "k": "vim::Down",
-      "l": "vim::Up",
-      ";": "vim::Right",
+    "context": "Editor && edit_prediction",
+    "unbind": {
+      "tab": "editor::AcceptEditPrediction",
     },
   },
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "Editor && vim_mode == insert",
     "bindings": {
-      "'": "vim::RepeatFind",
-      "U": "editor::Redo",
-      "g n": "editor::SelectAllMatches",
-      "space f": "editor::Format",
-      "space i": "editor::OrganizeImports",
-      "space j": "editor::GoToDiagnostic",
-      "space '": "editor::GoToPreviousDiagnostic",
-      "space p": "command_palette::Toggle",
-      "space ;": "workspace::ToggleRightDock",
-      "space c l": "workspace::ToggleCenteredLayout",
-      "space e": "project_panel::ToggleFocus",
-      "space \\": "project_panel::CollapseAllEntries",
-      "space o": "outline::Toggle",
-      "space w": "pane::CloseActiveItem",
-      "space q a": "pane::CloseAllItems",
+      "j j": "vim::SwitchToNormalMode",
+      "j k": "vim::SwitchToNormalMode",
     },
   },
 ]

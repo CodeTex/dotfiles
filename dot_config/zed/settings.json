@@ -11,12 +11,8 @@
   },
   "agent_servers": {
     "opencode": {
-      "default_config_options": {
-        "mode": "plan",
-        "model": "ollama/qwen3.6:35b"
-      },
-      "type": "registry"
-    }
+      "type": "registry",
+    },
   },
   "edit_predictions": {
     "mode": "subtle",
@@ -37,19 +33,21 @@
 
   // Appearance
   "buffer_font_family": "Monaspace Neon",
-  "buffer_font_size": 10,
+  "buffer_font_size": 12,
+  "buffer_font_weight": 300,
+  "selection_highlight": false,
   "icon_theme": {
     "dark": "Catppuccin Mocha",
     "light": "Catppuccin Latte",
     "mode": "dark",
   },
   "theme": {
-    "dark": "Catppuccin Macchiato",
+    "dark": "Catppuccin Mocha",
     "light": "Nord Light",
     "mode": "dark",
   },
-  "ui_font_family": "Roboto",
-  "ui_font_size": 13,
+  "ui_font_family": "Monaspace Argon",
+  "ui_font_size": 14,
 
   // Debugging
   "debugger": {
@@ -57,36 +55,37 @@
   },
 
   // Editor
-  "auto_indent_on_paste": false,
+  // "auto_indent_on_paste": false,
   "autosave": {
     "after_delay": {
-      "milliseconds": 5000,
+      "milliseconds": 4500,
     },
   },
-  "cursor_shape": "hollow",
-  "drag_and_drop_selection": {
-    "enabled": false,
-  },
+  "diff_view_style": "split",
+  // "drag_and_drop_selection": {
+  //   "enabled": false,
+  // },
   "extend_comment_on_newline": false,
-  "format_on_save": "off",
   "gutter": {
+    "folds": false,
     "line_numbers": true,
     "min_line_number_digits": 0,
   },
   "horizontal_scroll_margin": 1,
-  "hover_popover_enabled": true,
-  "inline_code_actions": false,
+  // "hover_popover_enabled": true,
+  // "inline_code_actions": false,
   "multi_cursor_modifier": "cmd_or_ctrl",
-  "relative_line_numbers": "enabled",
-  "show_completions_on_input": true,
-  "show_completion_documentation": true,
+  // "relative_line_numbers": "enabled",
+  // "show_completions_on_input": false,
+  // "show_completion_documentation": false,
+  // "show_edit_predictions": true,
   "vertical_scroll_margin": 1,
   "vim_mode": false,
 
   // General
   "auto_update": false,
   "restore_on_file_reopen": false,
-  "restore_on_startup": "empty_tab",
+  "restore_on_startup": "launchpad",
   "session": {
     "restore_unsaved_buffers": false,
   },
@@ -96,21 +95,15 @@
   },
 
   // Panels
-  "collaboration_panel": {
-    "button": false,
-    "dock": null,
-  },
   "git_panel": {
-    "dock": "left",
+    "default_width": 400,
   },
   "outline_panel": {
-    "dock": "left",
-    "default_width": 300,
+    "default_width": 400,
   },
   "project_panel": {
     "auto_fold_dirs": false,
-    "dock": "left",
-    "default_width": 300,
+    "default_width": 400,
     "hide_root": true,
     "starts_open": false,
   },
@@ -151,6 +144,7 @@
         "yaml": {
           "schemas": {
             "https://raw.githubusercontent.com/Nuitka/Nuitka/c4b663ccd79f6a89463fdb9a7a3ff1599ef05803/nuitka/package_config/nuitka-package-config-schema.json": "*.nuitka-package.config.yml",
+            "https://schema.opencollection.com/opencollection/v1.0.0.json": "bruno//**/*.yml",
           },
         },
       },
@@ -165,6 +159,11 @@
 
   // Terminal
   "terminal": {
+    "detect_venv": {
+      "on": {
+        "directories": [".venv"],
+      },
+    },
     "font_family": "JetBrainsMono Nerd Font Mono",
   },
 
@@ -183,8 +182,6 @@
   },
   "title_bar": {
     "show_onboarding_banner": false,
-    "show_project_items": true,
-    "show_branch_name": true,
     "show_branch_status_icon": true,
     "show_user_menu": false,
   },
