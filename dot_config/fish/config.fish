@@ -68,6 +68,8 @@ mise activate fish | source
 
 starship init fish | source
 
+set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
+
 zoxide init fish | source
 
 if type -q fzf_key_bindings

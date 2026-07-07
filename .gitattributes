@@ -4,3 +4,12 @@ dot_config/powershell/** text eol=crlf
 *.ps1 text eol=crlf
 *.bat text eol=crlf
 *.cmd text eol=crlf
+
+*.sh text eol=lf
+*.zsh text eol=lf
+*.fish text eol=lf
+fish_variables text eol=lf
+*.vim text eol=lf
+_vimrc text eol=lf
+*.lua text eol=lf
+*.toml text eol=lf

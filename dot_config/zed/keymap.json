@@ -13,7 +13,6 @@
       "cmd-]": "editor::UnfoldLines",
       "cmd-alt-[": "editor::FoldAll",
       "cmd-alt-]": "editor::UnfoldAll",
-      "tab": "editor::AcceptEditPrediction",
     },
   },
   {
@@ -27,6 +26,13 @@
     "bindings": {
       "j j": "vim::SwitchToNormalMode",
       "j k": "vim::SwitchToNormalMode",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
+      "ctrl-alt-p": "file_finder::Toggle",
     },
   },
 ]

@@ -1,11 +1,29 @@
 {
   // AI
   "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5-mini",
+      "enable_thinking": false,
+    },
+    "commit_message_instructions": "Use the Conventional Commits format, single line, no footers or body: <type>(<scope>): <description>.",
     "commit_message_model": {
       "model": "qwen3.5:4b",
       "provider": "ollama",
     },
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.3-codex",
+      "enable_thinking": true,
+      "effort": "high",
+    },
     "dock": "right",
+    // "inline_alternatives": [
+    //   {
+    //     "provider": "copilot_chat",
+    //     "model": "gpt-5-mini",
+    //   },
+    // ],
     "favorite_models": [],
     "model_parameters": [],
   },
@@ -24,29 +42,25 @@
       "auto_discover": true,
       "context_window": 4096,
     },
-    "opencode": {
-      "show_free_models": true,
-      "show_go_models": false,
-      "show_zen_models": false,
-    },
   },
 
   // Appearance
   "buffer_font_family": "Monaspace Neon",
-  "buffer_font_size": 12,
+  "buffer_font_size": 11,
   "buffer_font_weight": 300,
   "selection_highlight": false,
   "icon_theme": {
+    "mode": "dark",
     "dark": "Catppuccin Mocha",
     "light": "Catppuccin Latte",
-    "mode": "dark",
   },
   "theme": {
+    "mode": "dark",
     "dark": "Catppuccin Mocha",
     "light": "Nord Light",
-    "mode": "dark",
   },
-  "ui_font_family": "Monaspace Argon",
+  // "ui_font_family": "Monaspace Argon",
+  "ui_font_family": "Roboto",
   "ui_font_size": 14,
 
   // Debugging
@@ -55,7 +69,7 @@
   },
 
   // Editor
-  // "auto_indent_on_paste": false,
+  "auto_indent_on_paste": false,
   "autosave": {
     "after_delay": {
       "milliseconds": 4500,
@@ -80,7 +94,7 @@
   // "show_completion_documentation": false,
   // "show_edit_predictions": true,
   "vertical_scroll_margin": 1,
-  "vim_mode": false,
+  "vim_mode": true,
 
   // General
   "auto_update": false,
@@ -97,6 +111,7 @@
   // Panels
   "git_panel": {
     "default_width": 400,
+    // "dock": "left",
   },
   "outline_panel": {
     "default_width": 400,
@@ -104,6 +119,7 @@
   "project_panel": {
     "auto_fold_dirs": false,
     "default_width": 400,
+    "dock": "left",
     "hide_root": true,
     "starts_open": false,
   },
@@ -143,7 +159,6 @@
       "settings": {
         "yaml": {
           "schemas": {
-            "https://raw.githubusercontent.com/Nuitka/Nuitka/c4b663ccd79f6a89463fdb9a7a3ff1599ef05803/nuitka/package_config/nuitka-package-config-schema.json": "*.nuitka-package.config.yml",
             "https://schema.opencollection.com/opencollection/v1.0.0.json": "bruno//**/*.yml",
           },
         },

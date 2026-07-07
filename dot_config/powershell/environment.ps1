@@ -41,7 +41,7 @@ $ENV:FZF_DEFAULT_OPTS = @'
 
 # uv
 $UV_CACHE_DIR = "$HOME\AppData\Local\uv\cache"
-$UV_CACHE_ENV_DIR = "$UV_CACHE_DIR\environments-v2"
+$ENV:UV_CACHE_ENV_DIR = "$UV_CACHE_DIR\environments-v2"
 
 # Custom update notification (choose one option above)
 # $ENV:POWERSHELL_UPDATECHECK = 'Off'

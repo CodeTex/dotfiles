@@ -1,8 +1,9 @@
 add_newline = false
-command_timeout = 1000
-scan_timeout = 30
+scan_timeout = 500
+command_timeout = 3600
 
 format = """
+$os\
 $directory\
 $git_branch\
 $git_status\
@@ -18,7 +19,7 @@ success_symbol = "[❯](green)"
 error_symbol = "[❯](red)"
 
 [cmd_duration]
-min_time = 100
+min_time = 1000
 show_milliseconds = true
 format = "[$duration](bright-black)"
 
@@ -26,3 +27,19 @@ format = "[$duration](bright-black)"
 truncation_length = 3
 truncate_to_repo = true
 read_only = " 🔒"
+
+[os]
+disabled = false
+format = "[$symbol](bold white) "
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+Debian = "󰣚"
+Arch = "󰣇"
+Linux = "󰌽"
+Unknown = "?"
+
+# [username]
+# show_always = true
+# format = "[ $user ]($style)"
