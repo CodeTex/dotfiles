@@ -73,7 +73,7 @@
       "prompt": "{file:./prompts/build.md}",
     },
     "plan": {
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "github-copilot/gpt-5.4-mini",
       "prompt": "{file:./prompts/plan.md}",
     },
   },

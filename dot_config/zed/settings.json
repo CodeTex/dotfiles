@@ -1,37 +1,33 @@
 {
   // AI
+  "collaboration_panel": {
+    "button": false
+  },
   "agent": {
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5-mini",
-      "enable_thinking": false,
-    },
+  //   "inline_assistant_model": {
+  //     "provider": "copilot_chat",
+  //     "model": "gpt-5-mini",
+  //     "enable_thinking": false,
+  //   },
     "commit_message_instructions": "Use the Conventional Commits format, single line, no footers or body: <type>(<scope>): <description>.",
     "commit_message_model": {
       "model": "qwen3.5:4b",
       "provider": "ollama",
     },
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5.3-codex",
-      "enable_thinking": true,
-      "effort": "high",
-    },
+  //   "default_model": {
+  //     "provider": "copilot_chat",
+  //     "model": "gpt-5.3-codex",
+  //     "enable_thinking": true,
+  //     "effort": "high",
+  //   },
+    "sidebar_side": "right",
     "dock": "right",
-    // "inline_alternatives": [
-    //   {
-    //     "provider": "copilot_chat",
-    //     "model": "gpt-5-mini",
-    //   },
-    // ],
-    "favorite_models": [],
-    "model_parameters": [],
   },
-  "agent_servers": {
-    "opencode": {
-      "type": "registry",
-    },
-  },
+  // "agent_servers": {
+  //   "opencode": {
+  //     "type": "registry",
+  //   },
+  // },
   "edit_predictions": {
     "mode": "subtle",
     "provider": "copilot",
@@ -40,7 +36,7 @@
     "ollama": {
       "api_url": "http://localhost:11434",
       "auto_discover": true,
-      "context_window": 4096,
+      "context_window": 8192
     },
   },
 
@@ -111,10 +107,10 @@
   // Panels
   "git_panel": {
     "default_width": 400,
-    // "dock": "left",
   },
   "outline_panel": {
     "default_width": 400,
+    "dock": "left",
   },
   "project_panel": {
     "auto_fold_dirs": false,
@@ -188,6 +184,7 @@
     "inline_blame": {
       "delay_ms": 500,
       "enabled": true,
+      "location": "status_bar"
     },
   },
 
