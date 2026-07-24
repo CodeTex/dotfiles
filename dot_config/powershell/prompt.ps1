@@ -28,3 +28,4 @@ Invoke-CachedShellTool `
     -InstallHint "Install with: mise use -g starship"
 
 # Invoke-Expression (&starship init powershell)
+docker completion powershell | Out-String | Invoke-Expression
