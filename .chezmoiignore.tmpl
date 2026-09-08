@@ -1,0 +1,26 @@
+README.md
+
+backups/   # ignore the backups folder, but not its contents
+backups/** # ignore the contents of backups folder but not the folder itself
+
+.config/chezmoi/chezmoi.toml
+.config/powershell/*.json
+
+{{ if or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux") }}
+.config/powershell/
+.config/scoop/
+.config/uwsm/
+.config/vscode/
+.config/wezterm/
+{{ end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+.config/hypr/
+.config/executable_setup.sh
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+.bashrc
+.config/hypr/
+.config/executable_setup.sh
+{{ end }}
