@@ -1,0 +1,39 @@
+. "$HOME/.local/bin/env"
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/julian.dittrich/.docker/completions $fpath)
+autoload -Uz compinit
+(( ${+_comps[docker]} )) || compinit
+# End of Docker CLI completions
+
+# - alias ---
+alias sf='source ~/.zshrc'
+alias vf='vim ~/.zshrc'
+
+# eza
+alias ls='eza'
+alias l='eza --long -bF'
+alias ll='eza --long -a'
+alias llm='eza --long -a --sort=modified'
+alias la='eza -a --group-directories-first'
+alias tree='eza --tree'
+
+# - init ---
+source <(fzf --zsh)
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+# - wrapper ---
+function fz() {
+    fzf --style full \
+        --preview 'fzf-preview.sh {}' \
+        --bind 'focus:transform-header:file --brief {}' "$@"
+}
+
+function y() {
+    local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+	command rm -f -- "$tmp"
+}
