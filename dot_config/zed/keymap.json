@@ -1,38 +1,21 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
 [
   {
     "context": "Workspace",
     "bindings": {
-      "alt-s": "zed::OpenSettingsFile",
-      "alt-k": "zed::OpenKeymapFile",
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "cmd-[": "editor::Fold",
-      "cmd-]": "editor::UnfoldLines",
-      "cmd-alt-[": "editor::FoldAll",
-      "cmd-alt-]": "editor::UnfoldAll",
-    },
-  },
-  {
-    "context": "Editor && edit_prediction",
-    "unbind": {
-      "tab": "editor::AcceptEditPrediction",
+      // "shift shift": "file_finder::Toggle"
     },
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "j j": "vim::SwitchToNormalMode",
-      "j k": "vim::SwitchToNormalMode",
-    },
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
-      "ctrl-alt-p": "file_finder::Toggle",
+      // "j k": "vim::NormalBefore"
     },
   },
 ]

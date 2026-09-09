@@ -1,0 +1,157 @@
+{
+  // AI
+  // "agent": {
+  //   "commit_message_model": {
+  //     "provider": "ollama",
+  //     "model": "qwen3.6:0.8b"
+  //   },
+  //   "commit_message_instructions": "Use the Conventional Commits format: <type>(<scope>): <description>. No body or footer by default."
+  // },
+  "agent_servers": {
+    "opencode": {
+      "default_config_options": {
+        "model": "github-copilot/gpt-5.6-luna",
+        "mode": "plan"
+      },
+      "favorite_config_option_values": {
+        "model": [
+          "github-copilot/gpt-5.6-sol",
+          "github-copilot/gpt-5.6-terra",
+          "github-copilot/gpt-5.6-luna"
+        ]
+      },
+      "type": "registry"
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+    "provider": "copilot",
+  },
+
+  // Appearance
+  "agent_buffer_font_size": 11.0,
+  // "agent_ui_font_family": "Noto Sans",
+  "agent_ui_font_size": 14.0,
+  "buffer_font_family": "Monaspace Neon",
+  "buffer_font_size": 11,
+  "buffer_font_weight": 300.0,
+  "icon_theme": {
+    "mode": "dark",
+    "dark": "Catppuccin Mocha",
+    "light": "Catppuccin Latte",
+  },
+  "theme": {
+    "mode": "dark",
+    "dark": "Catppuccin Mocha",
+    "light": "Nord Light",
+  },
+  // "ui_font_family": "RobotoMono Nerd Font",
+  "ui_font_size": 14,
+
+  // Debugging
+
+  // Editor
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 4500,
+    },
+  },
+  "diff_view_style": "split",
+  "relative_line_numbers": "wrapped",
+  "vim_mode": true,
+
+  // General
+  "auto_update": false,
+  "cli_default_open_behavior": "new_window",
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+  },
+
+  // Languages / LSP
+  "languages": {
+    "Dockerfile": {
+      "language_servers": [
+        "docker-language-server",
+        "dockerfile-language-server",
+      ],
+      "wrap_guides": [100],
+    },
+    "Markdown": {
+      "format_on_save": "off",
+      "wrap_guides": [200],
+    },
+    "Python": {
+      "code_actions_on_format": {
+        "source.fixAll.ruff": true,
+        "source.organizeImports.ruff": true,
+      },
+      "format_on_save": "on",
+      "language_servers": ["ty", "ruff", "!basedpyright"],
+      "wrap_guides": [90],
+    },
+    "TOML": {
+      "wrap_guides": [80],
+    },
+    "YAML": {
+      "language_servers": ["yaml-language-server"],
+      "wrap_guides": [100],
+    },
+  },
+  "lsp": {
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "schemas": {
+            "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/v0.23.1/schema/markdownlint-cli2-config-schema.json": ".markdownlint-cli2.yaml",
+            "https://schema.opencollection.com/opencollection/v1.0.0.json": "bruno//**/*.yml",
+          },
+        },
+      },
+    },
+  },
+
+  // Panels
+  "collaboration_panel": {
+    "button": false,
+  },
+
+  // Search & Files
+  "file_finder": {
+    "file_icons": true,
+    "modal_max_width": "medium",
+  },
+
+  // Terminal
+  "terminal": {
+    "detect_venv": {
+      "on": {
+        "directories": [".venv"],
+      },
+    },
+    "font_family": "JetBrainsMono Nerd Font Mono",
+  },
+
+  // Version Control
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "delay_ms": 500,
+      "enabled": true,
+      "location": "status_bar"
+    },
+  },
+
+  // Window & Layout
+  // "status_bar": {
+  //   "experimental.show": true,
+  // },
+  // "title_bar": {
+  //   "show_onboarding_banner": false,
+  //   "show_branch_status_icon": true,
+  //   "show_user_menu": false,
+  // },
+  // "toolbar": {
+  //   "quick_actions": false,
+  // },
+}
