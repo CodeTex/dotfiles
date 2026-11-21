@@ -10,7 +10,22 @@
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
+      "cmd-shift-g": "git_panel::ToggleFocus",
+      "cmd-shift-t": "terminal_panel::Toggle",
+      "ctrl-shift-t": "pane::ReopenClosedItem"
     },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-shift-g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "AcpThread",
+    "bindings": {
+      "cmd-shift-g": "git_panel::ToggleFocus"
+    }
   },
   {
     "context": "Editor && vim_mode == insert",
@@ -18,4 +33,11 @@
       // "j k": "vim::NormalBefore"
     },
   },
+  {
+    "context": "AcpThread > Editor",
+    "bindings": {
+      "shift-tab": "agent::CycleThinkingEffort",
+      "ctrl-'": null
+    }
+  }
 ]

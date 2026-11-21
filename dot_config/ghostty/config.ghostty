@@ -1,0 +1,49 @@
+# Config
+macos-option-as-alt = left
+macos-titlebar-style = tabs
+theme = Catppuccin Mocha
+
+# Font
+font-family = "JetBrainsMono Nerd Font"
+font-style = Regular
+font-size = 12
+
+# Window
+background-blur-radius = 20
+unfocused-split-opacity = 1
+window-theme = ghostty
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = true
+
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+# Cursor styling + SSH session terminfo
+# (all shell integration options must be passed together)
+shell-integration-features = no-cursor,ssh-env
+
+# --- Keyboard bindings ---
+# Let left Option act as Alt for Herdr shortcuts; preserve right Option for special characters.
+keybind = shift+insert=paste_from_clipboard
+keybind = control+insert=copy_to_clipboard
+
+# Send Shift+Enter as CSI-u so TUIs can distinguish it from Enter.
+keybind = shift+enter=csi:13;2u
+# Legacy encoding sends Alt+Shift+Enter the same as Alt+Enter; send CSI-u so tmux can match M-S-Enter.
+keybind = alt+shift+enter=csi:13;4u
+
+# Let Herdr use Alt+Left/Right for tabs and Cmd+arrows for pane focus.
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind
+keybind = super+arrow_left=unbind
+keybind = super+arrow_right=unbind
+keybind = super+arrow_up=unbind
+keybind = super+arrow_down=unbind
+keybind = super+control+shift+alt+arrow_down=resize_split:down,100
+keybind = super+control+shift+alt+arrow_up=resize_split:up,100
+keybind = super+control+shift+alt+arrow_left=resize_split:left,100
+keybind = super+control+shift+alt+arrow_right=resize_split:right,100
+

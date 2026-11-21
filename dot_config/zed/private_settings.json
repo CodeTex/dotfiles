@@ -1,23 +1,35 @@
 {
   // AI
-  // "agent": {
-  //   "commit_message_model": {
-  //     "provider": "ollama",
-  //     "model": "qwen3.6:0.8b"
-  //   },
-  //   "commit_message_instructions": "Use the Conventional Commits format: <type>(<scope>): <description>. No body or footer by default."
-  // },
+  "agent": {
+    "commit_message_instructions": "Use the Conventional Commits format: <type>(<scope>): <description>. No body or footer by default, prefer lowercase, broader and thus fewer specialized scope values.",
+    "dock": "right",
+    "threads_sidebar": {
+      "position": "right",
+    },
+  },
   "agent_servers": {
+    "pi-acp": {
+      "favorite_config_option_values": {
+        "model": [
+          "github-copilot/gpt-6-luna",
+          "github-copilot/gpt-6.1-sol"
+        ]
+      },
+      "default_config_options": {
+        "thought_level": "high",
+        "model": "github-copilot/gpt-6-luna"
+      },
+      "type": "registry"
+    },
     "opencode": {
       "default_config_options": {
-        "model": "github-copilot/gpt-5.6-luna",
-        "mode": "plan"
+        "model": "github-copilot/gpt-6-luna",
+        "mode": "build"
       },
       "favorite_config_option_values": {
         "model": [
-          "github-copilot/gpt-5.6-sol",
-          "github-copilot/gpt-5.6-terra",
-          "github-copilot/gpt-5.6-luna"
+          "github-copilot/gpt-6-sol",
+          "github-copilot/gpt-6.1-luna"
         ]
       },
       "type": "registry"
@@ -27,8 +39,18 @@
     "mode": "subtle",
     "provider": "copilot",
   },
+  "language_models": {
+    "llama.cpp": {
+      "api_url": "http://127.0.0.1:18080",
+      "auto_discover": false
+    }
+  },
 
   // Appearance
+  "active_pane_modifiers": {
+    "border_size": 1.0,
+    "inactive_opacity": 0.5
+  },
   "agent_buffer_font_size": 11.0,
   // "agent_ui_font_family": "Noto Sans",
   "agent_ui_font_size": 14.0,
@@ -45,17 +67,25 @@
     "dark": "Catppuccin Mocha",
     "light": "Nord Light",
   },
+  "theme_overrides": {
+    "Catppuccin Mocha": {
+      "pane.focused_border": "#89b4fa",
+    },
+    "Nord Light": {
+      "pane.focused_border": "#1e66f5",
+    },
+  },
   // "ui_font_family": "RobotoMono Nerd Font",
   "ui_font_size": 14,
 
   // Debugging
 
   // Editor
-  "autosave": {
-    "after_delay": {
-      "milliseconds": 4500,
-    },
-  },
+  // "autosave": {
+  //   "after_delay": {
+  //     "milliseconds": 4500,
+  //   },
+  // },
   "diff_view_style": "split",
   "relative_line_numbers": "wrapped",
   "vim_mode": true,
@@ -112,6 +142,15 @@
   },
 
   // Panels
+  "git_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "project_panel": {
+    "dock": "left",
+  },
   "collaboration_panel": {
     "button": false,
   },
@@ -143,15 +182,4 @@
   },
 
   // Window & Layout
-  // "status_bar": {
-  //   "experimental.show": true,
-  // },
-  // "title_bar": {
-  //   "show_onboarding_banner": false,
-  //   "show_branch_status_icon": true,
-  //   "show_user_menu": false,
-  // },
-  // "toolbar": {
-  //   "quick_actions": false,
-  // },
 }

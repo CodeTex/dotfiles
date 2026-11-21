@@ -1,16 +1,26 @@
 . "$HOME/.local/bin/env"
 
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/julian.dittrich/.docker/completions $fpath)
-autoload -Uz compinit
-(( ${+_comps[docker]} )) || compinit
-# End of Docker CLI completions
+# Load modular configuration
+for file in "$HOME"/.zsh/conf.d/*.zsh(N); do
+    source "$file"
+done
+
+# Load machine-local configuration
+if [[ -r "$HOME/.config/.zsh/local.zsh" ]]; then
+    source "$HOME/.config/.zsh/local.zsh"
+fi
+
+# Load secrets
+if [[ -r "$HOME/.config/.zsh/secrets.zsh" ]]; then
+    source "$HOME/.config/.zsh/secrets.zsh"
+fi
 
 # - alias ---
 alias sf='source ~/.zshrc'
 alias vf='vim ~/.zshrc'
+alias va='vim ~/.zsh/conf.d/aliases.zsh'
+alias ve='vim ~/.zsh/conf.d/environment.zsh'
 
-# eza
 alias ls='eza'
 alias l='eza --long -bF'
 alias ll='eza --long -a'
@@ -37,3 +47,15 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
 	command rm -f -- "$tmp"
 }
+
+# - misc ---
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/julian.dittrich/.docker/completions $fpath)
+autoload -Uz compinit
+(( ${+_comps[docker]} )) || compinit
+# End of Docker CLI completions
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/julian.dittrich/.lmstudio/bin"
+# End of LM Studio CLI section
+
